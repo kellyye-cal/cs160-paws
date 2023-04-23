@@ -66,13 +66,45 @@
     max-height: 100%;
   }
 
-  .food-text {
+  .food-name {
     font-family: 'Lexend';
     text-align: left;
-    color: #535353;
+    color: black;
     font-size: 16px;
   }
-  
+
+  .food-amount {
+    font-family: 'Lexend';
+    text-align: left;
+    color: gray;
+    font-size: 16px;
+  }
+
+  .nutrition-name {
+    font-family: 'Lexend';
+    text-align: left;
+    color: black;
+    font-size: 16px;
+  }
+
+  .nutrition-amount {
+    font-family: 'Lexend';
+    text-align: left;
+    color: gray;
+    font-size: 16px;
+  }
+
+  .axis-value {
+    font-family: 'Lexend';
+    color: gray;
+    font-size: 10px;
+  }
+
+  .axis {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+  }
   
   @media only screen and (max-width: 620px) {
     /* For mobile phones: */
