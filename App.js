@@ -21,8 +21,8 @@ router.get("/", function (req, res) {
 });
 
 //The nutrition page.
-app.get('/nutrition', function (req, res) {
-    res.sendFile(publicPath + '/nutrition/main.html');
+app.get('/food', function (req, res) {
+    res.sendFile(publicPath + '/food/main.html');
 });
 
 //depending on what url extension the user navigates to, send them the respective html file. 
