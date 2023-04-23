@@ -20,6 +20,11 @@ router.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "/"));
 });
 
+//The nutrition page.
+app.get('/nutrition', function (req, res) {
+    res.sendFile(publicPath + '/nutrition/main.html');
+});
+
 //depending on what url extension the user navigates to, send them the respective html file. 
 app.get('/a', function (req, res) {
     res.sendFile(publicPath + '/a.html');
