@@ -1,5 +1,7 @@
 $(document).ready(function(){
   $("#add-menu").hide();
+  $("#amount-enter").hide();
+  $("#are-you-sure").hide();
 
   $("#add-button").click(function() {
     if ( $("#add-menu").first().is( ":hidden" ) ) {
@@ -30,8 +32,46 @@ $(document).ready(function(){
 
     if ( $(this).attr("src") == original){
       $(this).attr("src", selected);
+      $("#amount-enter").slideDown("slow");
     } else {
       $(this).attr("src", original);
+      $("#amount-enter").slideUp("slow");
+      $("#are-you-sure").slideUp("slow");
     }
   });
+
+  // AMOUNT CHANGE screen
+  $("#discard-item").click(function() {
+    if ( $("#are-you-sure").first().is( ":hidden" ) ) {
+      $("#are-you-sure").slideDown("slow");
+    } else {
+      $("#are-you-sure").slideUp("slow");
+    }
+  });
+  $("#confirm-item").click(function() {
+    if (! $("#are-you-sure").first().is( ":hidden" ) ) {
+      $("#are-you-sure").slideUp("slow");
+    }
+    $("#amount-enter").slideUp("slow");
+    $('.food-item').each(function(i, obj) {
+      if ($(this).attr("src")[21] == "_") {
+        $(this).attr("src", "../images/food_item_" + $(this).attr("src")[20] + ".png");
+      }
+    });
+  });
+
+  // ARE YOU SURE? screen
+  $("#discard-confirm").click(function() {
+    $("#amount-enter").slideUp("slow");
+    $("#are-you-sure").slideUp("slow");
+    $('.food-item').each(function(i, obj) {
+      if ($(this).attr("src")[21] == "_") {
+        $(this).attr("src", "../images/food_item_" + $(this).attr("src")[20] + ".png");
+      }
+    });
+  });
+  $("#discard-cancel").click(function() {
+    $("#are-you-sure").slideUp("slow");
+  });
+
 });
