@@ -64,6 +64,22 @@
     transform: translate(-50%, 350%);
   }
 
+  .amount-change {
+    background-color: #D9D9D9;
+    border-width: 2px;
+    border-color: #D9D9D9;
+  }
+
+  .are-you-sure {
+    background-color: #F34B50;
+    border-width: 2px;
+    border-color: #D9D9D9;
+  }
+
+  .are-you-sure-text {
+    color: white;
+  }
+
   .title {
     font-family: 'Lexend';
     text-align: left;
