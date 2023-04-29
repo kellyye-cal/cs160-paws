@@ -140,8 +140,15 @@
     transform: translate(6%);
   }
 
-  .value-highlight {
+  .value-highlight-right {
     background-color: #0A8B36;
+    border-radius: 25px;
+    transform: translate(-165%);
+    z-index:-1;
+  }
+
+  .value-highlight-wrong {
+    background-color: #F34B50;
     border-radius: 25px;
     transform: translate(-165%);
     z-index:-1;
