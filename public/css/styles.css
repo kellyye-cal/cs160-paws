@@ -80,6 +80,10 @@
     color: white;
   }
 
+  .scrolling-wrapper{
+    overflow-x: auto;
+  }
+
   .title {
     font-family: 'Lexend';
     text-align: left;
