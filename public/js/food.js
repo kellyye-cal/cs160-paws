@@ -33,16 +33,5 @@ $(document).ready(function(){
     } else {
       $(this).attr("src", original);
     }
-        
-    // for (let i = 1; i <= 8; i++){
-    //   let original = "../images/food_item_" + i + ".png";
-    //   let selected = "../images/food_item_" + i + "_selected.png";
-
-    //   if ( $(this).attr("src", original)){
-    //     $(this).attr("src", selected);
-    //   } else {
-    //     $(this).attr("src", original);
-    //   }
-    // }
   });
 });
