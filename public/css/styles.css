@@ -112,8 +112,9 @@
   .nutrition-amount {
     font-family: 'Lexend';
     text-align: left;
-    color: gray;
+    color: white;
     font-size: 16px;
+    font-weight: bold;
   }
 
   .axis-value {
@@ -126,6 +127,24 @@
     position: relative;
     max-width: 100%;
     max-height: 100%;
+  }
+
+  .axis-pointer {
+    max-width: 1.5em;
+    height: auto;
+    width: auto\9;
+  }
+
+  /* 6% - 64% */
+  .axis-shift {
+    transform: translate(6%);
+  }
+
+  .value-highlight {
+    background-color: #0A8B36;
+    border-radius: 25px;
+    transform: translate(-165%);
+    z-index:-1;
   }
 
   .loading {
