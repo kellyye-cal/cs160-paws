@@ -16,6 +16,20 @@ let addButton = '<div class="col-3 justify-content-center">' +
 let foodNames = ["Water","Meat","Apple","Carrot","Chicken","Banana","Milk","Fish"];
 let foodAmounts = [400,200,100,0,0,0,0,0];
 
+// Water, Calories, Fats, Carbs, Proteins
+// Per 100g
+// g, kCal, g, g, g
+let nutrients = [
+  [100, 0, 0, 0, 0],
+  [58, 293, 25, 0, 17],
+  [86, 52, 0.17, 14, 0.26],
+  [88, 41, 0.24, 9.6, 0.93],
+  [59, 239, 14, 0, 27],
+  [75, 89, 0.33, 23, 1.1],
+  [88, 61, 3.3, 4.8, 3.2],
+  [65, 206, 12, 0, 22]
+];
+
 function foodItemInMeals(index) {
   return '<div class="col-3 justify-content-center">' +
           '<div class="row">' +
@@ -59,6 +73,7 @@ $(document).ready(function(){
   $("#add-menu").hide();
   $("#amount-change").hide();
   $("#amount-add").hide();
+  $("#amount-confirm").hide();
   $("#are-you-sure").hide();
 
   function initialize() {
@@ -91,6 +106,21 @@ $(document).ready(function(){
     } else {
       $("#scroll-add-hint").show();
     }
+
+    // Initialize suggestions list
+    $("#suggestions").empty();
+    for (let i = 1; i <= 8; i++) {
+      if (foodAmounts[i-1] == 0) {
+        $("#suggestions").append(foodItemInSuggestions(i));
+      }
+    }
+
+    if ($("#suggestions").children().length <= 4) {
+      $("#scroll-suggestion-hint").hide();
+    } else {
+      $("#scroll-suggestion-hint").show();
+    }
+
   }
 
   initialize();
@@ -137,6 +167,10 @@ $(document).ready(function(){
       if ($(this).attr("id").charAt(2) == "a") {
         $("#amount-add").slideDown("slow");
       }
+      if ($(this).attr("id").charAt(2) == "s") {
+        $("#amount-confirm-number").val(foodAmounts[index-1]);
+        $("#amount-confirm").slideDown("slow");
+      }
     } else {
       $(this).attr("src", original);
       if ($(this).attr("id").charAt(2) == "m") {
@@ -145,6 +179,9 @@ $(document).ready(function(){
       }
       if ($(this).attr("id").charAt(2) == "a") {
         $("#amount-add").slideUp("slow");
+      }
+      if ($(this).attr("id").charAt(2) == "s") {
+        $("#amount-confirm").slideUp("slow");
       }
     }
   });
@@ -217,6 +254,22 @@ $(document).ready(function(){
   });
   $("#discard-cancel").click(function() {
     $("#are-you-sure").slideUp("slow");
+  });
+
+  // CONFIRM screen
+  $("#confirm-suggestion").click(function() {
+    let amount = $("#amount-confirm-number").val();
+
+    $("#amount-confirm").slideUp("slow");
+    $('.food-item').each(function(i, obj) {
+      if ($(this).attr("src")[21] == "_") {
+        let selectedId = parseInt($(this).attr("id")[0]);
+        foodAmounts[selectedId-1] = amount;
+        $(this).attr("src", "../images/food_item_" + $(this).attr("src")[20] + ".png");
+      }
+    });
+    initialize();
+    $(window).scrollTop(0);
   });
 
 });
