@@ -19,7 +19,32 @@ let foodAmounts = [400,200,100,0,0,0,0,0];
 function foodItemInMeals(index) {
   return '<div class="col-3 justify-content-center">' +
           '<div class="row">' +
-          '<img src="../images/food_item_' + index + '.png" class="food-item">' +
+          '<img src="../images/food_item_' + index + '.png" id="' + index + '-m" class="food-item">' +
+          '</div>' +
+          '<div class="row food-name justify-content-center">' +
+          foodNames[index-1] +
+          '</div>' +
+          '<div class="row food-amount justify-content-center">' + 
+          foodAmounts[index-1] + 'g' +
+          '</div>' +
+          '</div>';
+}
+
+function foodItemInAdds(index) {
+  return '<div class="col-3 justify-content-center">' +
+          '<div class="row">' +
+          '<img src="../images/food_item_' + index + '.png" id="' + index + '-a" class="food-item">' +
+          '</div>' +
+          '<div class="row food-name justify-content-center">' +
+          foodNames[index-1] +
+          '</div>' +
+          '</div>';
+}
+
+function foodItemInSuggestions(index) {
+  return '<div class="col-3 justify-content-center">' +
+          '<div class="row">' +
+          '<img src="../images/food_item_' + index + '.png" id="' + index + '-s" class="food-item">' +
           '</div>' +
           '<div class="row food-name justify-content-center">' +
           foodNames[index-1] +
@@ -32,39 +57,49 @@ function foodItemInMeals(index) {
 
 $(document).ready(function(){
   $("#add-menu").hide();
-  $("#amount-enter").hide();
+  $("#amount-change").hide();
+  $("#amount-add").hide();
   $("#are-you-sure").hide();
 
-  $("#meals").empty();
-  for (let i = 1; i <= 8; i++) {
-    if (foodAmounts[i-1] != 0) {
-      $("#meals").append(foodItemInMeals(i));
+  function initialize() {
+    // Initialize meals list
+    $("#meals").empty();
+    for (let i = 1; i <= 8; i++) {
+      if (foodAmounts[i-1] != 0) {
+        $("#meals").append(foodItemInMeals(i));
+      }
+    }
+
+    $("#meals").append(addButton); 
+    
+    if ($("#meals").children().length <= 4) {
+      $("#scroll-hint").hide();
+    } else {
+      $("#scroll-hint").show();
+    }
+
+    // Initialize add items list
+    $("#adds").empty();
+    for (let i = 1; i <= 8; i++) {
+      if (foodAmounts[i-1] == 0) {
+        $("#adds").append(foodItemInAdds(i));
+      }
+    }
+
+    if ($("#adds").children().length <= 4) {
+      $("#scroll-add-hint").hide();
+    } else {
+      $("#scroll-add-hint").show();
     }
   }
 
-  $("#meals").append(addButton); 
-  
-  if ($("#meals").children().length <= 4) {
-    $("#scroll-hint").hide();
-  } else {
-    $("#scroll-hint").show();
-  }
+  initialize();
 
-  $("#adds").empty();
-  for (let i = 1; i <= 8; i++) {
-    if (foodAmounts[i-1] == 0) {
-      $("#adds").append(foodItemInMeals(i));
-    }
-  }
-
-  if ($("#adds").children().length <= 4) {
-    $("#scroll-add-hint").hide();
-  } else {
-    $("#scroll-add-hint").show();
-  }
-
-  $("#add-button").click(function() {
-
+  // Add button
+  $(document.body).on('click', "#add-button", function() {
+    $("#amount-change").slideUp("slow");
+    $("#amount-add").slideUp("slow");
+    $("#are-you-sure").slideUp("slow");
     if ( $("#add-menu").first().is( ":hidden" ) ) {
       $("#add-menu").slideDown("slow");
       $("#add-image").attr("src", "../images/food_item_close.png");
@@ -76,7 +111,9 @@ $(document).ready(function(){
     }
   });
 
-  $(".food-item").click(function() {
+  // Food item
+  // $(".food-item").on("click", function() {
+  $(document.body).on('click', '.food-item' ,function(){
     let index = $(this).attr("src")[20];
     let thisItem = $(this);
 
@@ -93,11 +130,45 @@ $(document).ready(function(){
 
     if ( $(this).attr("src") == original){
       $(this).attr("src", selected);
-      $("#amount-enter").slideDown("slow");
+      if ($(this).attr("id").charAt(2) == "m") {
+        $("#amount-change-number").val(foodAmounts[index-1]);
+        $("#amount-change").slideDown("slow");
+      }
+      if ($(this).attr("id").charAt(2) == "a") {
+        $("#amount-add").slideDown("slow");
+      }
     } else {
       $(this).attr("src", original);
-      $("#amount-enter").slideUp("slow");
-      $("#are-you-sure").slideUp("slow");
+      if ($(this).attr("id").charAt(2) == "m") {
+        $("#amount-change").slideUp("slow");
+        $("#are-you-sure").slideUp("slow");
+      }
+      if ($(this).attr("id").charAt(2) == "a") {
+        $("#amount-add").slideUp("slow");
+      }
+    }
+  });
+
+  // AMOUNT ADD screen
+  $("#confirm-add-item").click(function() {
+    let amount = $("#amount-add-number").val();
+
+    if ((amount.trim() != "") && (!isNaN(amount)) && (parseFloat(amount) >= 0)){
+      $("#amount-add").slideUp("slow");
+      $('.food-item').each(function(i, obj) {
+        if ($(this).attr("src")[21] == "_") {
+          let selectedId = parseInt($(this).attr("id")[0]);
+          foodAmounts[selectedId-1] = amount;
+          $(this).attr("src", "../images/food_item_" + $(this).attr("src")[20] + ".png");
+        }
+      });
+      initialize();
+      $("#add-menu").slideUp("slow");
+      $("#add-image").attr("src", "../images/food_item_add.png");
+      $("#add-text").text("Add...");
+      $(window).scrollTop(0);
+    } else {
+      alert("Please enter a positive number.");
     }
   });
 
@@ -110,26 +181,39 @@ $(document).ready(function(){
     }
   });
   $("#confirm-item").click(function() {
-    if (! $("#are-you-sure").first().is( ":hidden" ) ) {
-      $("#are-you-sure").slideUp("slow");
-    }
-    $("#amount-enter").slideUp("slow");
-    $('.food-item').each(function(i, obj) {
-      if ($(this).attr("src")[21] == "_") {
-        $(this).attr("src", "../images/food_item_" + $(this).attr("src")[20] + ".png");
+    let amount = $("#amount-change-number").val();
+
+    if ((amount.trim() != "") && (!isNaN(amount)) && (parseFloat(amount) >= 0)){
+      if (! $("#are-you-sure").first().is( ":hidden" ) ) {
+        $("#are-you-sure").slideUp("slow");
       }
-    });
+      $("#amount-change").slideUp("slow");
+      $('.food-item').each(function(i, obj) {
+        if ($(this).attr("src")[21] == "_") {
+          let selectedId = parseInt($(this).attr("id")[0]);
+          foodAmounts[selectedId-1] = amount;
+          $(this).attr("src", "../images/food_item_" + $(this).attr("src")[20] + ".png");
+        }
+      });
+      initialize();
+      $(window).scrollTop(0);
+    } else {
+      alert("Please enter a positive number.");
+    }
   });
 
   // ARE YOU SURE? screen
   $("#discard-confirm").click(function() {
-    $("#amount-enter").slideUp("slow");
+    $("#amount-change").slideUp("slow");
     $("#are-you-sure").slideUp("slow");
     $('.food-item').each(function(i, obj) {
       if ($(this).attr("src")[21] == "_") {
+        let selectedId = parseInt($(this).attr("id")[0]);
+        foodAmounts[selectedId-1] = 0;
         $(this).attr("src", "../images/food_item_" + $(this).attr("src")[20] + ".png");
       }
     });
+    initialize();
   });
   $("#discard-cancel").click(function() {
     $("#are-you-sure").slideUp("slow");
