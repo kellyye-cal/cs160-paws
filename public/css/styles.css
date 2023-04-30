@@ -155,11 +155,6 @@
     width: auto\9;
   }
 
-  /* 6% - 64% */
-  .axis-shift {
-    transform: translate(6%);
-  }
-
   .value-highlight-right {
     background-color: #0A8B36;
     border-radius: 25px;

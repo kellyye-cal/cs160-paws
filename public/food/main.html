@@ -22,49 +22,6 @@
         </div>
         <div class="container-fluid rounded section-background pt-1 pb-1">
             <div class="scrolling-wrapper row flex-row flex-nowrap mt-3 mb-2" id="meals">
-                <div class="col-3 justify-content-center">
-                    <div class="row">
-                        <img src="../images/food_item_1.png" class="food-item">
-                    </div>
-                    <div class="row food-name justify-content-center">
-                        Water
-                    </div>
-                    <div class="row food-amount justify-content-center">
-                        400g
-                    </div>
-                </div>
-                <div class="col-3 justify-content-center">
-                    <div class="row">
-                        <img src="../images/food_item_2.png" class="food-item">
-                    </div>
-                    <div class="row food-name justify-content-center">
-                        Meat
-                    </div>
-                    <div class="row food-amount justify-content-center">
-                        200g
-                    </div>
-                </div>
-                <div class="col-3 justify-content-center">
-                    <div class="row">
-                        <img src="../images/food_item_3.png" class="food-item">
-                    </div>
-                    <div class="row food-name justify-content-center">
-                        Apple
-                    </div>
-                    <div class="row food-amount justify-content-center">
-                        100g
-                    </div>
-                </div>
-                <div class="col-3 justify-content-center">
-                    <div id="add-button">
-                        <div class="row">
-                            <img src="../images/food_item_add.png" class="food-item" id="add-image">
-                        </div>
-                        <div class="row food-name justify-content-center" id="add-text">
-                            Add...
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="row justify-content-center" id="scroll-hint">
                 ← Scroll left/right to view or add →
@@ -123,30 +80,6 @@
                 Add an item
             </div>
             <div class="scrolling-wrapper row flex-row flex-nowrap mt-3 mb-2" id="adds">
-                <div class="col-3 justify-content-center">
-                    <div class="row">
-                        <img src="../images/food_item_4.png" class="food-item">
-                    </div>
-                    <div class="row food-name justify-content-center">
-                        Carrot
-                    </div>
-                </div>
-                <div class="col-3 justify-content-center">
-                    <div class="row">
-                        <img src="../images/food_item_5.png" class="food-item">
-                    </div>
-                    <div class="row food-name justify-content-center">
-                        Chicken
-                    </div>
-                </div>
-                <div class="col-3 justify-content-center">
-                    <div class="row">
-                        <img src="../images/food_item_6.png" class="food-item">
-                    </div>
-                    <div class="row food-name justify-content-center">
-                        Banana
-                    </div>
-                </div>
             </div>
             <div class="row justify-content-center" id="scroll-add-hint">
                 ← Scroll left/right to view more →
@@ -185,55 +118,57 @@
             <div class="col-12 subtitle">
                 Overview
             </div>
-            <div class="row mt-3">
-                <div class="col-4 nutrition-name">
-                    Water
-                </div>
-                <div class="col-8">
-                    <div class="text-success">
-                        OK
+            <div id="nutrition-overview">
+                <div class="row mt-3">
+                    <div class="col-4 nutrition-name">
+                        Water
                     </div>
-                    <div>
-                        It has the right amount!
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-4 nutrition-name">
-                    Calories
-                </div>
-                <div class="col-8">
-                    <div class="text-danger">
-                        Too much
-                    </div>
-                    <div>
-                        It has the right amount!
+                    <div class="col-8">
+                        <div class="text-success">
+                            OK
+                        </div>
+                        <div>
+                            It has the right amount!
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-4 nutrition-name">
-                    Fats
-                </div>
-                <div class="col-8">
-                    <div class="text-danger">
-                        Too little
+                <div class="row mt-3">
+                    <div class="col-4 nutrition-name">
+                        Calories
                     </div>
-                    <div class="text-danger">
-                        Need at least 5g more.
+                    <div class="col-8">
+                        <div class="text-danger">
+                            Too much
+                        </div>
+                        <div>
+                            It has the right amount!
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-4 nutrition-name">
-                    Proteins
-                </div>
-                <div class="col-8">
-                    <div class="text-success">
-                        OK
+                <div class="row mt-3">
+                    <div class="col-4 nutrition-name">
+                        Fats
                     </div>
-                    <div>
-                        It has the right amount!
+                    <div class="col-8">
+                        <div class="text-danger">
+                            Too little
+                        </div>
+                        <div class="text-danger">
+                            Need at least 5g more.
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-4 nutrition-name">
+                        Proteins
+                    </div>
+                    <div class="col-8">
+                        <div class="text-success">
+                            OK
+                        </div>
+                        <div>
+                            It has the right amount!
+                        </div>
                     </div>
                 </div>
             </div>
@@ -244,130 +179,133 @@
                 Analysis
             </div>
 
-        <div class="row mt-3">
-            <div class="col-4"></div>
-            <div class="col-3 axis-value text-start">
-                Too little
-            </div>
-            <div class="col-2 axis-value text-center">
-                OK
-            </div>
-            <div class="col-3 axis-value text-end">
-                Too much
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4 nutrition-name">
-                Water
-            </div>
-            <div class="col-8">
-                <img src="../images/axis_new.png" class="axis">
-            </div>
-        </div>
-        <div class="row axis-shift">
-            <div class="col-3 text-end">
-                <div class="nutrition-amount text-center">200g</div>
-            </div>
-            <div class="col-2">
-                <img src="../images/axis_pointer.png" class="axis-pointer">
-            </div>
-            <div class="col-3 value-highlight-right">
+            <div id="nutrition-analysis">
+                <div class="row mt-3">
+                    <div class="col-4"></div>
+                    <div class="col-3 axis-value text-start">
+                        Too little
+                    </div>
+                    <div class="col-2 axis-value text-center">
+                        OK
+                    </div>
+                    <div class="col-3 axis-value text-end">
+                        Too much
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 nutrition-name">
+                        Water
+                    </div>
+                    <div class="col-8">
+                        <img src="../images/axis_new.png" class="axis">
+                    </div>
+                </div>
+                <div class="row axis-shift">
+                    <div class="col-3 text-end">
+                        <div class="nutrition-amount text-center">200g</div>
+                    </div>
+                    <div class="col-2">
+                        <img src="../images/axis_pointer.png" class="axis-pointer">
+                    </div>
+                    <div class="col-3 value-highlight-right">
+                    </div>
+                </div>
+        
+                <div class="row mt-3">
+                    <div class="col-4"></div>
+                    <div class="col-3 axis-value text-start">
+                        Too little
+                    </div>
+                    <div class="col-2 axis-value text-center">
+                        OK
+                    </div>
+                    <div class="col-3 axis-value text-end">
+                        Too much
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 nutrition-name">
+                        Calories
+                    </div>
+                    <div class="col-8">
+                        <img src="../images/axis_new.png" class="axis">
+                    </div>
+                </div>
+                <div class="row axis-shift">
+                    <div class="col-3 text-end">
+                        <div class="nutrition-amount text-center">0g</div>
+                    </div>
+                    <div class="col-2">
+                        <img src="../images/axis_pointer.png" class="axis-pointer">
+                    </div>
+                    <div class="col-3 value-highlight-wrong">
+                    </div>
+                </div>
+        
+                <div class="row mt-3">
+                    <div class="col-4"></div>
+                    <div class="col-3 axis-value text-start">
+                        Too little
+                    </div>
+                    <div class="col-2 axis-value text-center">
+                        OK
+                    </div>
+                    <div class="col-3 axis-value text-end">
+                        Too much
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 nutrition-name">
+                        Fats
+                    </div>
+                    <div class="col-8">
+                        <img src="../images/axis_new.png" class="axis">
+                    </div>
+                </div>
+                <div class="row axis-shift">
+                    <div class="col-3 text-end">
+                        <div class="nutrition-amount text-center">0g</div>
+                    </div>
+                    <div class="col-2">
+                        <img src="../images/axis_pointer.png" class="axis-pointer">
+                    </div>
+                    <div class="col-3 value-highlight-wrong">
+                    </div>
+                </div>
+        
+                <div class="row mt-3">
+                    <div class="col-4"></div>
+                    <div class="col-3 axis-value text-start">
+                        Too little
+                    </div>
+                    <div class="col-2 axis-value text-center">
+                        OK
+                    </div>
+                    <div class="col-3 axis-value text-end">
+                        Too much
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 nutrition-name">
+                        Proteins
+                    </div>
+                    <div class="col-8">
+                        <img src="../images/axis_new.png" class="axis">
+                    </div>
+                </div>
+                <div class="row axis-shift">
+                    <div class="col-3 text-end">
+                        <div class="nutrition-amount text-center">0g</div>
+                    </div>
+                    <div class="col-2">
+                        <img src="../images/axis_pointer.png" class="axis-pointer">
+                    </div>
+                    <div class="col-3 value-highlight-wrong">
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="row mt-3">
-            <div class="col-4"></div>
-            <div class="col-3 axis-value text-start">
-                Too little
-            </div>
-            <div class="col-2 axis-value text-center">
-                OK
-            </div>
-            <div class="col-3 axis-value text-end">
-                Too much
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4 nutrition-name">
-                Calories
-            </div>
-            <div class="col-8">
-                <img src="../images/axis_new.png" class="axis">
-            </div>
-        </div>
-        <div class="row axis-shift">
-            <div class="col-3 text-end">
-                <div class="nutrition-amount text-center">0g</div>
-            </div>
-            <div class="col-2">
-                <img src="../images/axis_pointer.png" class="axis-pointer">
-            </div>
-            <div class="col-3 value-highlight-wrong">
-            </div>
-        </div>
-
-        <div class="row mt-3">
-            <div class="col-4"></div>
-            <div class="col-3 axis-value text-start">
-                Too little
-            </div>
-            <div class="col-2 axis-value text-center">
-                OK
-            </div>
-            <div class="col-3 axis-value text-end">
-                Too much
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4 nutrition-name">
-                Fats
-            </div>
-            <div class="col-8">
-                <img src="../images/axis_new.png" class="axis">
-            </div>
-        </div>
-        <div class="row axis-shift">
-            <div class="col-3 text-end">
-                <div class="nutrition-amount text-center">0g</div>
-            </div>
-            <div class="col-2">
-                <img src="../images/axis_pointer.png" class="axis-pointer">
-            </div>
-            <div class="col-3 value-highlight-wrong">
-            </div>
-        </div>
-
-        <div class="row mt-3">
-            <div class="col-4"></div>
-            <div class="col-3 axis-value text-start">
-                Too little
-            </div>
-            <div class="col-2 axis-value text-center">
-                OK
-            </div>
-            <div class="col-3 axis-value text-end">
-                Too much
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4 nutrition-name">
-                Proteins
-            </div>
-            <div class="col-8">
-                <img src="../images/axis_new.png" class="axis">
-            </div>
-        </div>
-        <div class="row axis-shift">
-            <div class="col-3 text-end">
-                <div class="nutrition-amount text-center">0g</div>
-            </div>
-            <div class="col-2">
-                <img src="../images/axis_pointer.png" class="axis-pointer">
-            </div>
-            <div class="col-3 value-highlight-wrong">
-            </div>
-        </div>
-        </div>
         <div class="row mt-4 mb-2 title">
             <div class="col-12">
                 Suggestions
@@ -375,39 +313,6 @@
         </div>
         <div class="container-fluid rounded section-background pt-1 pb-2">
             <div class="scrolling-wrapper row flex-row flex-nowrap mt-3" id="suggestions">
-                <div class="col-3 justify-content-center">
-                    <div class="row">
-                        <img src="../images/food_item_1.png" class="food-item">
-                    </div>
-                    <div class="row food-name justify-content-center">
-                        Water
-                    </div>
-                    <div class="row food-amount justify-content-center">
-                        400g
-                    </div>
-                </div>
-                <div class="col-3 justify-content-center">
-                    <div class="row">
-                        <img src="../images/food_item_2.png" class="food-item">
-                    </div>
-                    <div class="row food-name justify-content-center">
-                        Meat
-                    </div>
-                    <div class="row food-amount justify-content-center">
-                        200g
-                    </div>
-                </div>
-                <div class="col-3 justify-content-center">
-                    <div class="row">
-                        <img src="../images/food_item_3.png" class="food-item">
-                    </div>
-                    <div class="row food-name justify-content-center">
-                        Apple
-                    </div>
-                    <div class="row food-amount justify-content-center">
-                        100g
-                    </div>
-                </div>
             </div>
             <div class="row justify-content-center" id="scroll-suggestion-hint">
                 ← Scroll left/right to view more→

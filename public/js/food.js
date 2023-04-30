@@ -9,17 +9,11 @@ let addButton = '<div class="col-3 justify-content-center">' +
                 '</div>' +
                 '</div>';
 
-// let all = [1,2,3,4,5,6,7,8];
-// let meals = [1, 2, 3];
-// let adds = all.filter(x => !meals.includes(x));
-
 let foodNames = ["Water","Meat","Apple","Carrot","Chicken","Banana","Milk","Fish"];
 let foodAmounts = [400,200,100,0,0,0,0,0];
 
-let waterAmount = 0.0;
-let caloriesAmount = 0.0;
-let fatsAmount = 0.0;
-let proteinsAmount = 0.0;
+let nutrientMinimums = [425.25, 461, 5.5, 10];
+let nutrientMaximums = [1275.74, 1383, 25, 40];
 
 // Water, Calories, Fats, Proteins
 // Per 100g
@@ -61,6 +55,105 @@ let nutrients = [
 // calories: 922 kcal (461-1383)
 // fat: 5.5% - 25%
 // proteins: 10% - 40%
+
+let nutrientItems = ["Water", "Calories", "Fats", "Proteins"];
+let nutrientUnits = ["g", "kcal", "%", "%"];
+
+function okOverview(index) {
+  return '<div class="row mt-3">' +
+          '<div class="col-4 nutrition-name">' +
+          nutrientItems[index] +
+          '</div>' +
+          '<div class="col-8">' +
+          '<div class="text-success">' +
+          'OK' +
+          '</div>' +
+          '<div>' +
+          'It has the right amount!' +
+          '</div>' +
+          '</div>' +
+          '</div>'
+}
+
+function tooLittleOverview(index, value) {
+  let diff = (nutrientMinimums[index] - value).toFixed(2);
+  return '<div class="row mt-3">' +
+          '<div class="col-4 nutrition-name">' +
+          nutrientItems[index] +
+          '</div>' +
+          '<div class="col-8">' +
+          '<div class="text-danger">' +
+          'Too little' +
+          '</div>' +
+          '<div>' +
+          'Need at least ' + diff + nutrientUnits[index] + ' more.' +
+          '</div>' +
+          '</div>' +
+          '</div>'
+}
+
+function tooMuchOverview(index) {
+  return '<div class="row mt-3">' +
+          '<div class="col-4 nutrition-name">' +
+          nutrientItems[index] +
+          '</div>' +
+          '<div class="col-8">' +
+          '<div class="text-danger">' +
+          'Too much' +
+          '</div>' +
+          '<div>' +
+          'Try to balance the meal.' +
+          '</div>' +
+          '</div>' +
+          '</div>'
+}
+
+function generateAnalysis(index, value, judge) {
+  let percentage = 25.0;
+  let minVal = nutrientMinimums[index];
+  let maxVal = nutrientMaximums[index];
+  percentage += ((value - minVal) * 1.0) / (maxVal - minVal) * 50;
+
+  if (percentage < 0.0) {
+    percentage = 0.0;
+  }
+  if (percentage > 100.0) {
+    percentage = 100.0;
+  }
+
+  let translate = 'translate(' + (7 + (64 - 7) * percentage / 100.0).toFixed(2) + '%)';
+  $(".axis-shift-" + (index+1)).css('transform', translate);
+  return '<div class="row mt-3">' +
+          '<div class="col-4"></div>' +
+          '<div class="col-3 axis-value text-start">' +
+          'Too little' +
+          '</div>' +
+          '<div class="col-2 axis-value text-center">' +
+          'OK' +
+          '</div>' + 
+          '<div class="col-3 axis-value text-end">' +
+          'Too much' +
+          '</div>' +
+          '</div>' +
+          '<div class="row">' +
+          '<div class="col-4 nutrition-name">' +
+          nutrientItems[index] +
+          '</div>' +
+          '<div class="col-8">' +
+          '<img src="../images/axis_new.png" class="axis">' +
+          '</div>' +
+          '</div>' +
+          '<div class="row" style="transform: ' + translate + ';">' +
+          '<div class="col-3 text-end">' +
+          '<div class="nutrition-amount text-center">' + value + nutrientUnits[index] + '</div>' +
+          '</div>' +
+          '<div class="col-2">' +
+          '<img src="../images/axis_pointer.png" class="axis-pointer">' +
+          '</div>' +
+          '<div class="col-3 value-highlight-' + judge + '">' +
+          '</div>' +
+          '</div>';
+}
 
 function foodItemInMeals(index) {
   return '<div class="col-3 justify-content-center">' +
@@ -108,6 +201,9 @@ $(document).ready(function(){
   $("#amount-confirm").hide();
   $("#are-you-sure").hide();
 
+  $("#amount-add-number").val("");
+  $("#amount-change-number").val("");
+
   function initialize() {
     // Initialize meals list
     $("#meals").empty();
@@ -140,6 +236,9 @@ $(document).ready(function(){
     }
 
     // Calculate Nutrients
+    for (let i = 0; i < 8; i++) {
+      foodAmounts[i] = parseFloat(foodAmounts[i]);
+    }
     let foodTotalWeight = foodAmounts.reduce((partialSum, a) => partialSum + a, 0);
     let res = [0.0, 0.0, 0.0, 0.0];
 
@@ -150,10 +249,32 @@ $(document).ready(function(){
       res[3] += nutrients[i][3] * (foodAmounts[i] * 1.0 / 100.0);
     }
 
-    res[2] = (res[2] / foodTotalWeight * 100.0).toFixed(2);
-    res[3] = (res[3] / foodTotalWeight * 100.0).toFixed(2);
+    res[2] = (res[2] / (foodTotalWeight - res[0]) * 100.0).toFixed(2);
+    res[3] = (res[3] / (foodTotalWeight - res[0]) * 100.0).toFixed(2);
 
-    alert(res);
+    // Initialize nutrients overview
+    $("#nutrition-overview").empty();
+
+    for (let i = 0; i < 4; i++) {
+      if (res[i] < nutrientMinimums[i]) {
+        $("#nutrition-overview").append(tooLittleOverview(i, res[i]));
+      } else if (res[i] > nutrientMaximums[i]) {
+        $("#nutrition-overview").append(tooMuchOverview(i));
+      } else {
+        $("#nutrition-overview").append(okOverview(i));
+      }
+    }
+
+    // Initialize nutrients analysis
+    $("#nutrition-analysis").empty();
+
+    for (let i = 0; i < 4; i++) {
+      if (res[i] < nutrientMinimums[i] || res[i] > nutrientMaximums[i]) {
+        $("#nutrition-analysis").append(generateAnalysis(i, res[i], "wrong"));
+      } else {
+        $("#nutrition-analysis").append(generateAnalysis(i, res[i], "right"));
+      }
+    }
 
     // Initialize suggestions list
     $("#suggestions").empty();
