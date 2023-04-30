@@ -16,19 +16,40 @@ let addButton = '<div class="col-3 justify-content-center">' +
 let foodNames = ["Water","Meat","Apple","Carrot","Chicken","Banana","Milk","Fish"];
 let foodAmounts = [400,200,100,0,0,0,0,0];
 
-// Water, Calories, Fats, Carbs, Proteins
+// Water, Calories, Fats, Proteins
 // Per 100g
-// g, kCal, g, g, g
+// g, kCal, g, g
 let nutrients = [
-  [100, 0, 0, 0, 0],
-  [58, 293, 25, 0, 17],
-  [86, 52, 0.17, 14, 0.26],
-  [88, 41, 0.24, 9.6, 0.93],
-  [59, 239, 14, 0, 27],
-  [75, 89, 0.33, 23, 1.1],
-  [88, 61, 3.3, 4.8, 3.2],
-  [65, 206, 12, 0, 22]
+  [100, 0, 0, 0],
+  [58, 293, 25, 17],
+  [86, 52, 0.17, 0.26],
+  [88, 41, 0.24, 0.93],
+  [59, 239, 14, 27],
+  [75, 89, 0.33, 1.1],
+  [88, 61, 3.3, 3.2],
+  [65, 206, 12, 22]
 ];
+
+// Dog water need:
+// 25-50ml/kg/24hrs
+// A 10kg dog, like a Westie, would be expected to drink approximately 480ml (just under a pint) in 24 hours.
+// average: 1 ounce of water (1/8 of a cup) per pound of body weight each day
+
+// Dog calories need:
+// 30 x weight in kg (or pounds divided by 2.2) + 70 = daily caloric needs
+
+//  A minimum of approximately 5.5% of the diet should come from fats and 10% from protein.
+// less than 25% fat
+// less than 40% protein
+
+// Dog average calories:
+// 10lb: 404 kcal; 30lb: 922 kcal; 50lb: 1353 kcal; 70lb: 1740 kcal; 90lb: 2100 kcal
+
+// 50lb 22.68kg
+// water: 1417.48g (708.74-2126.22)
+// calories: 1353 kcal (375.91-2029.5)
+// fat: 5.5% - 25%
+// proteins: 10% - 40%
 
 function foodItemInMeals(index) {
   return '<div class="col-3 justify-content-center">' +
