@@ -16,6 +16,11 @@ let addButton = '<div class="col-3 justify-content-center">' +
 let foodNames = ["Water","Meat","Apple","Carrot","Chicken","Banana","Milk","Fish"];
 let foodAmounts = [400,200,100,0,0,0,0,0];
 
+let waterAmount = 0.0;
+let caloriesAmount = 0.0;
+let fatsAmount = 0.0;
+let proteinsAmount = 0.0;
+
 // Water, Calories, Fats, Proteins
 // Per 100g
 // g, kCal, g, g
@@ -45,9 +50,15 @@ let nutrients = [
 // Dog average calories:
 // 10lb: 404 kcal; 30lb: 922 kcal; 50lb: 1353 kcal; 70lb: 1740 kcal; 90lb: 2100 kcal
 
-// 50lb 22.68kg
+// 50lb 22.68kg (Large)
 // water: 1417.48g (708.74-2126.22)
-// calories: 1353 kcal (375.91-2029.5)
+// calories: 1353 kcal (676.5-2029.5)
+// fat: 5.5% - 25%
+// proteins: 10% - 40%
+
+// 30lb 13.60kg (Medium)
+// water: 850.49g (425.25-1275.74)
+// calories: 922 kcal (461-1383)
 // fat: 5.5% - 25%
 // proteins: 10% - 40%
 
@@ -127,6 +138,22 @@ $(document).ready(function(){
     } else {
       $("#scroll-add-hint").show();
     }
+
+    // Calculate Nutrients
+    let foodTotalWeight = foodAmounts.reduce((partialSum, a) => partialSum + a, 0);
+    let res = [0.0, 0.0, 0.0, 0.0];
+
+    for (let i = 0; i < 8; i++) {
+      res[0] += nutrients[i][0] * (foodAmounts[i] * 1.0 / 100.0);
+      res[1] += nutrients[i][1] * (foodAmounts[i] * 1.0 / 100.0);
+      res[2] += nutrients[i][2] * (foodAmounts[i] * 1.0 / 100.0);
+      res[3] += nutrients[i][3] * (foodAmounts[i] * 1.0 / 100.0);
+    }
+
+    res[2] = (res[2] / foodTotalWeight * 100.0).toFixed(2);
+    res[3] = (res[3] / foodTotalWeight * 100.0).toFixed(2);
+
+    alert(res);
 
     // Initialize suggestions list
     $("#suggestions").empty();
