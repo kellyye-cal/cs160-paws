@@ -9,9 +9,9 @@ let addButton = '<div class="col-3 justify-content-center">' +
                 '</div>' +
                 '</div>';
 
-let all = [1,2,3,4,5,6,7,8];
-let meals = [1, 2, 3];
-let adds = all.filter(x => !meals.includes(x));
+// let all = [1,2,3,4,5,6,7,8];
+// let meals = [1, 2, 3];
+// let adds = all.filter(x => !meals.includes(x));
 
 let foodNames = ["Water","Meat","Apple","Carrot","Chicken","Banana","Milk","Fish"];
 let foodAmounts = [400,200,100,0,0,0,0,0];
@@ -30,40 +30,40 @@ function foodItemInMeals(index) {
           '</div>';
 }
 
-
 $(document).ready(function(){
   $("#add-menu").hide();
   $("#amount-enter").hide();
   $("#are-you-sure").hide();
 
+  $("#meals").empty();
+  for (let i = 1; i <= 8; i++) {
+    if (foodAmounts[i-1] != 0) {
+      $("#meals").append(foodItemInMeals(i));
+    }
+  }
+
+  $("#meals").append(addButton); 
+  
   if ($("#meals").children().length <= 4) {
     $("#scroll-hint").hide();
   } else {
     $("#scroll-hint").show();
   }
 
-  $("#meals").empty();
+  $("#adds").empty();
   for (let i = 1; i <= 8; i++) {
-    $("#meals").append(foodItemInMeals(i));
+    if (foodAmounts[i-1] == 0) {
+      $("#adds").append(foodItemInMeals(i));
+    }
   }
 
+  if ($("#adds").children().length <= 4) {
+    $("#scroll-add-hint").hide();
+  } else {
+    $("#scroll-add-hint").show();
+  }
 
   $("#add-button").click(function() {
-    // $("#meals").empty();
-    // let newItem = '<div class="col-3 justify-content-center">' +
-    //               '<div class="row">' + 
-    //               '<img src="../images/food_item_1.png" class="food-item">' +
-    //               '</div>' +
-    //               '<div class="row food-name justify-content-center">' +
-    //               'Water' +
-    //               '</div>' +
-    //               '<div class="row food-amount justify-content-center">' +
-    //               '400g' +
-    //               '</div>' +
-    //               '</div>';
-    // $("#meals").append(newItem);
-    // $("#meals").append(addButton);
-    // $("#meals").append(add);
 
     if ( $("#add-menu").first().is( ":hidden" ) ) {
       $("#add-menu").slideDown("slow");
