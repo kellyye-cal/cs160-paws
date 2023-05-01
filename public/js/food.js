@@ -11,6 +11,7 @@ let addButton = '<div class="col-3 justify-content-center">' +
 
 let foodNames = ["Water","Meat","Apple","Carrot","Chicken","Banana","Milk","Fish"];
 let foodAmounts = [400,200,100,0,0,0,0,0];
+let suggestionAmounts = [0,0,0,0,0,0,0,0];
 
 let nutrientMinimums = [425.25, 461, 5.5, 10];
 let nutrientMaximums = [1275.74, 1383, 25, 40];
@@ -180,7 +181,8 @@ function foodItemInAdds(index) {
           '</div>';
 }
 
-function foodItemInSuggestions(index) {
+function foodItemInSuggestions(index, value) {
+  suggestionAmounts[index-1] = value;
   return '<div class="col-3 justify-content-center">' +
           '<div class="row">' +
           '<img src="../images/food_item_' + index + '.png" id="' + index + '-s" class="food-item">' +
@@ -189,7 +191,7 @@ function foodItemInSuggestions(index) {
           foodNames[index-1] +
           '</div>' +
           '<div class="row food-amount justify-content-center">' + 
-          foodAmounts[index-1] + 'g' +
+          value + 'g' +
           '</div>' +
           '</div>';
 }
@@ -278,18 +280,83 @@ $(document).ready(function(){
 
     // Initialize suggestions list
     $("#suggestions").empty();
-    for (let i = 1; i <= 8; i++) {
-      if (foodAmounts[i-1] == 0) {
-        $("#suggestions").append(foodItemInSuggestions(i));
+
+    let haveSuggestions = false;
+    for (let i = 0; i < 4; i++) {
+      if (res[i] < nutrientMinimums[i] || res[i] > nutrientMaximums[i]) {
+        haveSuggestions = true;
       }
     }
+    if (haveSuggestions) {
+      $("#have-suggestions").show();
+      $("#no-suggestions").hide();
 
-    if ($("#suggestions").children().length <= 4) {
-      $("#scroll-suggestion-hint").hide();
+      // Linear Programming
+      //
+      // Current nutrient amounts: C1, C2, C3, C4
+      // Food nutrient amounts per 100g: x1, x2, x3, x4
+      // Nutrient min and max values: a1, b1, a2, b2, ...
+      //
+      // minimize t
+      // s.t. t > 0
+      // a1 <= C1 + t * x1 / 100 <= b1
+      // ... (for 2, 3, and 4)
+
+      for (let i = 1; i <= 8; i++) {
+        // let a = nutrientMinimums;
+        // let b = nutrientMaximums;
+        // let c = [parseFloat(res[0]), parseFloat(res[1]), parseFloat(res[2]), parseFloat(res[3])];
+        // let x = nutrients[i-1];
+
+        // let a0 = 100.0 / x[0] * (a[0] - c[0]);
+        // let a1 = 100.0 / x[1] * (a[1] - c[1]);
+        // let a2 = (a[2] * 1.0 / 100 * (c[1] + c[2] + c[3]) * 1.0 - c[2]) / (x[2] * 1.0 / 100 - a[2] * 1.0 / 100 * (x[1] * 1.0 / 100 + x[2] * 1.0 / 100 + x[3] * 1.0 / 100));
+        // let a3 = (a[3] * 1.0 / 100 * (c[1] + c[2] + c[3]) * 1.0 - c[3]) / (x[3] * 1.0 / 100 - a[3] * 1.0 / 100 * (x[1] * 1.0 / 100 + x[2] * 1.0 / 100 + x[3] * 1.0 / 100));
+        // let b0 = 100.0 / x[0] * (b[0] - c[0]);
+        // let b1 = 100.0 / x[1] * (b[1] - c[1]);
+        // let b2 = (b[2] * 1.0 / 100 * (c[1] + c[2] + c[3]) * 1.0 - c[2]) / (x[2] * 1.0 / 100 - b[2] * 1.0 / 100 * (x[1] * 1.0 / 100 + x[2] * 1.0 / 100 + x[3] * 1.0 / 100));
+        // let b3 = (b[3] * 1.0 / 100 * (c[1] + c[2] + c[3]) * 1.0 - c[3]) / (x[3] * 1.0 / 100 - b[3] * 1.0 / 100 * (x[1] * 1.0 / 100 + x[2] * 1.0 / 100 + x[3] * 1.0 / 100));
+        
+        // let minBoundary = [a0, a1];
+        // let maxBoundary = [b0, b1];
+        // if (x[2] * 1.0 / 100 - a[2] * 1.0 / 100 * (x[1] * 1.0 / 100 + x[2] * 1.0 / 100 + x[3] * 1.0 / 100) < 0.0) {
+        //   maxBoundary.push(a2);
+        // } else {
+        //   minBoundary.push(a2);
+        // }
+        // if (x[3] * 1.0 / 100 - a[3] * 1.0 / 100 * (x[1] * 1.0 / 100 + x[2] * 1.0 / 100 + x[3] * 1.0 / 100) < 0.0) {
+        //   maxBoundary.push(a3);
+        // } else {
+        //   minBoundary.push(a3);
+        // }
+        // if (x[2] * 1.0 / 100 - b[2] * 1.0 / 100 * (x[1] * 1.0 / 100 + x[2] * 1.0 / 100 + x[3] * 1.0 / 100) < 0.0) {
+        //   minBoundary.push(b2);
+        // } else {
+        //   maxBoundary.push(b2);
+        // }
+        // if (x[3] * 1.0 / 100 - b[3] * 1.0 / 100 * (x[1] * 1.0 / 100 + x[2] * 1.0 / 100 + x[3] * 1.0 / 100) < 0.0) {
+        //   minBoundary.push(b3);
+        // } else {
+        //   maxBoundary.push(b3);
+        // }
+
+        // if (maxBoundary >= minBoundary) {
+        //   alert(minBoundary);
+        //   $("#suggestions").append(foodItemInSuggestions(i));
+        // }
+        
+        $("#suggestions").append(foodItemInSuggestions(i, 100));
+      }
+  
+      if ($("#suggestions").children().length <= 4) {
+        $("#scroll-suggestion-hint").hide();
+      } else {
+        $("#scroll-suggestion-hint").show();
+      }
     } else {
-      $("#scroll-suggestion-hint").show();
+      $("#have-suggestions").hide();
+      $("#no-suggestions").show();
     }
-
   }
 
   initialize();
@@ -337,7 +404,7 @@ $(document).ready(function(){
         $("#amount-add").slideDown("slow");
       }
       if ($(this).attr("id").charAt(2) == "s") {
-        $("#amount-confirm-number").val(foodAmounts[index-1]);
+        $("#amount-confirm-number").val(suggestionAmounts[index-1]);
         $("#amount-confirm").slideDown("slow");
       }
     } else {
@@ -433,11 +500,12 @@ $(document).ready(function(){
     $('.food-item').each(function(i, obj) {
       if ($(this).attr("src")[21] == "_") {
         let selectedId = parseInt($(this).attr("id")[0]);
-        foodAmounts[selectedId-1] = amount;
+        foodAmounts[selectedId-1] = parseFloat(foodAmounts[selectedId-1]) + parseFloat(amount);
         $(this).attr("src", "../images/food_item_" + $(this).attr("src")[20] + ".png");
       }
     });
     initialize();
+    $(window).scrollTop(0);
     $(window).scrollTop(0);
   });
 

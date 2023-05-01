@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/css/styles.css">
+<link rel="stylesheet" type="text/css" href="/css/food.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="../js/food.js"></script>
 <!-- <script src="main.js"></script> -->
@@ -311,11 +311,16 @@
                 Suggestions
             </div>
         </div>
-        <div class="container-fluid rounded section-background pt-1 pb-2">
+        <div class="container-fluid rounded section-background pt-1 pb-2" id="have-suggestions">
             <div class="scrolling-wrapper row flex-row flex-nowrap mt-3" id="suggestions">
             </div>
             <div class="row justify-content-center" id="scroll-suggestion-hint">
                 ← Scroll left/right to view more→
+            </div>
+        </div>
+        <div class="container-fluid rounded section-background pt-1 pb-2" id="no-suggestions">
+            <div class="scrolling-wrapper row flex-row flex-nowrap justify-content-center mt-3 mb-3">
+                There is no suggestion.
             </div>
         </div>
         <div class="container rounded amount-change pt-2 pb-2" id="amount-confirm">
