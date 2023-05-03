@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/css/styles.css">
+<link rel="stylesheet" type="text/css" href="/css/health.css">
+
 <!-- <script src="main.js"></script> -->
 </head>
 
@@ -40,28 +42,258 @@
         </div>
 
         <div>
-            <h2> Pain Level </h2>
-        </div>
-
-        <div>
-            <h2> Notes </h2>
-            <div id="notes-box">
-                Touch to start typing...
+            <h2> <label> Notes </label></h2>
+            <textarea id="notes-box" placeholder="Touch to start typing..."></textarea>
+                
             </div>
         </div>
     </div>
 
     <div>
         <h1> Barney's Treatments </h1>
+        <button type="button" class="treatment"> Arthritis </button>
+        <div class="treatment-content"> 
+            <div style="margin: 8px 0px"> <b> Treatment Timeline: </b> <span> Feb 2023 - May 2023 </span> </div>
+            <div style="margin: 8px 0px">
+                <b> Key Medications </b>
+                <div class="horizontal-space"> <div style="height:fit-content"> <img class="pill" src="/images/pill.png"> <span> Arthritis Medication </span></div> <p> 1 tablet every day </p></div>
+            </div>
+            <div style="margin: 8px 0px">
+                <b> Vet Notes </b>
+                <p> Continue to monitor how active Barney is. Try not to push him to walk or engage in strenuous physical activity, like walks. </p>
+            </div>
+        </div>
+
+        <button type="button" class="treatment"> Leg Surgery </button>
+        <div class="treatment-content"> 
+            <div style="margin: 8px 0px"> <b> Treatment Timeline: </b> <span> Feb 2023 - May 2023 </span> </div>
+            <div style="margin: 8px 0px">
+                <b> Key Medications </b>
+                <div class="horizontal-space"> <div style="height:fit-content"> <img class="pill" src="/images/pill.png"> <span> Canine Aspirin </span></div> <p> 2 tablets every 12 hrs </p></div>
+            </div>
+            <div style="margin: 8px 0px">
+                <b> Vet Notes </b>
+                <p> Continue to monitor how active Barney is. Try not to push him to walk or engage in strenuous physical activity, like walks. </p>
+            </div>
+        </div>
     </div>
 
     <div>
         <h1> Vethub </h1>
+        <div class="outline">
+            <div class="horizontal-space"> <h3 style="line-height: 56px; margin: 0"> Appointments </h3> <div class="schedule-button"> &#43 Schedule </div></div>
+            
+            <div class="horizontal-space" style="align-items: center">
+                <div class="appt">
+                    <div class="calendar">
+                        <p class="cal-month"> May </p> <p class="cal-day"> 9 </p>
+                    </div>
+
+                    <div>
+                        <b class="appt-name"> Leg Surgery Follow-Up</b>
+                        <p class="appt-details"> 4:00pm &#x2022; Doctor Jiang</p>
+                    </div>
+                </div>
+
+                <p> Edit </p>
+            </div>
+
+            <div class="horizontal-space" style="align-items: center">
+                <div class="appt">
+                    <div class="calendar">
+                        <p class="cal-month"> May </p> <p class="cal-day"> 20 </p>
+                    </div>
+
+                    <div>
+                        <b class="appt-name"> Yearly Vaccinatins </b>
+                        <p class="appt-details"> 12:00pm &#x2022; Doctor Jiang</p>
+                    </div>
+                </div>
+
+                <p> Edit </p>
+            </div>
+        </div>
+
+        <div class="outline">
+            <h3> Vaccinations </h3>
+            <div class="horizontal-space" style="align-items: center;">
+                <div class="appt">
+                    <img src="/images/vaccine.png">
+                    <div>
+                        <b class="appt-name"> DHPP </b>
+                        <p class="appt-details"> Taken 4/20/22</p>
+                    </div>
+                </div>
+
+                <p class="red"> Expires Soon </p>
+            </div>
+
+            <div class="horizontal-space" style="align-items: center;">
+                <div class="appt">
+                    <img src="/images/vaccine.png">
+                    <div>
+                        <b class="appt-name"> Bordatella </b>
+                        <p class="appt-details"> Taken 4/20/22</p>
+                    </div>
+                </div>
+
+                <p class="green"> Compliant </p>
+            </div>
+
+            <div class="horizontal-space" style="align-items: center;">
+                <div class="appt">
+                    <img src="/images/vaccine.png">
+                    <div>
+                        <b class="appt-name"> Rabies </b>
+                        <p class="appt-details"> Taken 2/21/23</p>
+                    </div>
+                </div>
+
+                <p class="green"> Compliant </p>
+            </div>
+
+            <div class="horizontal-space" style="align-items: center;">
+                <div class="appt">
+                    <img src="/images/vaccine.png">
+                    <div>
+                        <b class="appt-name"> Leptosporosis </b>
+                        <p class="appt-details"> Taken 4/20/22</p>
+                    </div>
+                </div>
+
+                <p class="red"> Expires Soon </p>
+            </div>
+
+            <div class="horizontal-space" style="align-items: center;">
+                <div class="appt">
+                    <img src="/images/vaccine.png">
+                    <div>
+                        <b class="appt-name"> Lyme </b>
+                        <p class="appt-details"> Taken 4/20/22</p>
+                    </div>
+                </div>
+
+                <p class="red"> Non-Compliant </p>
+            </div>
+        </div>
     </div>
 
     <div>
-        <h1> Daily Logs </h1>
+        <div class="horizontal-space" style="align-items: center"> <h1> Daily Logs </h1> <div class="filter-button"> Filter </div></div>
+
+        <div class="horizontal-space gray-bg logs" style="align-items: center;">
+            <div class="log">
+                <img src="/images/happy.png" class="face">
+                <div>
+                    <b class="appt-name"> April 19th, 2023 </b>
+                    <p class="appt-details"> Took all medications </p>
+                </div>
+            </div>
+
+            <p> View Notes </p>
+        </div>
+
+        <div class="horizontal-space gray-bg logs" style="align-items: center;">
+            <div class="log">
+                <img src="/images/mild.png" class="face">
+                <div>
+                    <b class="appt-name"> April 18th, 2023 </b>
+                    <p class="appt-details"> Took all medications </p>
+                </div>
+            </div>
+
+            <p> View Notes </p>
+        </div>
+
+        <div class="horizontal-space gray-bg logs" style="align-items: center;">
+            <div class="log">
+                <img src="/images/happy.png" class="face">
+                <div>
+                    <b class="appt-name"> April 17th, 2023 </b>
+                    <p class="appt-details"> Took all medications </p>
+                </div>
+            </div>
+
+            <p> View Notes </p>
+        </div>
+
+        <div class="horizontal-space gray-bg logs" style="align-items: center;">
+            <div class="log">
+                <img src="/images/happy.png" class="face">
+                <div>
+                    <b class="appt-name"> April 16th, 2023 </b>
+                    <p class="appt-details"> Took all medications </p>
+                </div>
+            </div>
+
+            <p> View Notes </p>
+        </div>
+
+        <div class="horizontal-space gray-bg logs" style="align-items: center;">
+            <div class="log">
+                <img src="/images/mild.png" class="face">
+                <div>
+                    <b class="appt-name"> April 15th, 2023 </b>
+                    <p class="appt-details"> Took all medications </p>
+                </div>
+            </div>
+
+            <p> View Notes </p>
+        </div>
+
+        <div class="horizontal-space gray-bg logs" style="align-items: center;">
+            <div class="log">
+                <img src="/images/happy.png" class="face">
+                <div>
+                    <b class="appt-name"> April 14th, 2023 </b>
+                    <p class="appt-details"> Did not take aspirin </p>
+                </div>
+            </div>
+
+            <p> View Notes </p>
+        </div>
+
+        <div class="horizontal-space gray-bg logs" style="align-items: center;">
+            <div class="log">
+                <img src="/images/happy.png" class="face">
+                <div>
+                    <b class="appt-name"> April 13th, 2023 </b>
+                    <p class="appt-details"> Took all medications </p>
+                </div>
+            </div>
+
+            <p> View Notes </p>
+        </div>
+
+        <div class="horizontal-space gray-bg logs" style="align-items: center;">
+            <div class="log">
+                <img src="/images/happy.png" class="face">
+                <div>
+                    <b class="appt-name"> April 12th, 2023 </b>
+                    <p class="appt-details"> Took all medications </p>
+                </div>
+            </div>
+
+            <p> View Notes </p>
+        </div>
     </div>
 </body>
 
 </html>
+
+<script>
+    var treatment = document.getElementsByClassName("treatment");
+    var i;
+    console.log(treatment.length);
+    for (i = 0; i < treatment.length; i++) {
+    treatment[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+        content.style.display = "none";
+        } else {
+        content.style.display = "block";
+        }
+    });
+}
+</script>

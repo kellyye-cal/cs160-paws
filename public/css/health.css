@@ -1,0 +1,267 @@
+.treatment {
+  font-size: 16pt;
+  background-color: #ABD2FF;
+  cursor: pointer;
+  padding: 8px 12px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  border-radius: 8px;
+  margin: 4px 0px;
+}
+
+.treatment:after {
+  content: '\02795';
+  float: right;
+  margin-left: 5px;
+  color: black;
+  font-size: 16pt;
+}
+
+.active {
+  border-radius: 8px 8px 0px 0px;
+  margin-bottom: 0px;
+  margin-top: 4px;
+}
+
+.active:after {
+  content: "\2796";
+  color: black;
+  font-size: 16pt;
+}
+
+ .treatment-content {
+  padding: 8px 12px;
+  font-size: 12pt;
+  display: none;
+  overflow: hidden;
+  background-color: #ABD2FF;
+  color: black;
+  border-radius: 0px 0px 8px 8px;
+  margin-bottom: 4px;
+ }
+
+ .horizontal-space {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: fit-content;
+ }
+
+ .schedule-button {
+  font-size: 12pt;
+  color: black;
+  background-color: #ABD2FF;
+  border-radius: 20px;
+  padding: 4px 16px;
+  width: fit-content;
+ }
+
+ .calendar {
+  width: 60px;
+  text-align: center;
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+.cal-month {
+  font-size: 12pt;
+  background-color: #ABD2FF;
+  color: black;
+  margin: 0;
+  padding: 2px;
+
+}
+
+.cal-day {
+  font-size: 20pt;
+  color: black;
+  margin: 0;
+  padding: 2px;
+}
+
+.appt {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 8px 0px;
+}
+
+.appt-name {
+  font-size: 16pt;
+  margin-left: 8px;
+  color: black;
+}
+
+.appt-details {
+  color: #494949;
+  font-size: 16pt;
+  margin-left: 8px;
+  margin-bottom: 0px;
+}
+
+.outline {
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #252525;
+  padding: 8px 16px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.red {
+  color: #F34B50;
+}
+
+.green {
+  color: #0A8B36;
+}
+
+.filter-button {
+  font-size: 16pt;
+  color: black;
+  background-color: #ABD2FF;
+  border-radius: 20px;
+  padding: 4px 16px;
+  width: fit-content;
+  height: fit-content;
+ }
+
+ .face {
+  width: 40px;
+ }
+
+ .log {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 8px 0px;
+}
+
+.gray-bg {
+  background-color: #F0F3F6;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+
+@media only screen and (min-width: 620px) {
+  body {
+    padding: 28px 60px;
+  }
+  h1 {
+    font-size: 36pt;
+    margin: 32px 0px 12px 0px;
+  }
+
+  h2 {
+    font-size: 32pt;
+  }
+
+  h3 {
+    font-size: 32pt;
+  }
+
+  .meds {
+    font-size: 28pt;
+    padding-left: 68px;
+  }
+
+  .checkmark {
+    height: 48px;
+    width: 48px;
+  }
+
+  .meds .checkmark:after {
+    left: 14px;
+    top: 2px;
+    width: 20px;
+    height: 36px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  #notes-box {
+    width: 100%;
+    height: 200px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #252525;
+    padding: 16px 24px;
+    font-size: 28pt;
+  }
+
+  .treatment {
+    font-size: 28pt;
+    padding: 12px 28px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .active {
+    border-radius: 8px 8px 0px 0px;
+    margin-bottom: 0px;
+    margin-top: 8px;
+  }
+
+  .outline {
+    padding: 12px 28px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .treatment:after {
+    font-size: 24pt;
+  }
+  .treatment-content {
+    font-size: 25pt;
+  }
+  .pill {
+    width: 28px;
+  }
+  
+  .schedule-button {
+    font-size: 24pt;
+    border-radius: 32px;
+    padding: 8px 20px;
+  }
+
+  .filter-button {
+    font-size: 24pt;
+    border-radius: 32px;
+    padding: 8px 20px;
+  }
+
+  .calendar {
+    width: 100px;
+  }
+  .cal-month {
+    font-size: 20pt;
+  }
+  .cal-day {
+    font-size: 28pt;
+  }
+  .appt-name {
+    font-size: 28pt;
+  }
+  .appt-details {
+    font-size: 28pt;
+  }
+  p {
+    font-size: 20pt;
+  }
+  .appt img {
+    width: 48px;
+  }
+  .face {
+    width: 48px;
+  }
+}
