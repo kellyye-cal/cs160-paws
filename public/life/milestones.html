@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Keep Paws Posted</title>
+    <style>
+      /* Add your custom styles here */
+      * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #336699;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+      }
+      header h1 {
+        margin: 0;
+      }
+      header nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      header nav li {
+        margin: 0 10px;
+      }
+      header nav a {
+        color: white;
+        text-decoration: none;
+      }
+      main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      section {
+        margin-bottom: 20px;
+      }
+      h2 {
+        font-size: 24px;
+        margin-top: 0;
+      }
+      form {
+        display: flex;
+        margin-bottom: 20px;
+      }
+      form label {
+        width: 120px;
+        margin-right: 10px;
+        text-align: right;
+      }
+      form input {
+        flex-grow: 1;
+        padding: 5px;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 5px;
+      }
+      .milestone-entry {
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        padding: 10px;
+      }
+      .milestone-entry h3 {
+        margin-top: 0;
+      }
+      .milestone-entry p {
+        margin-top: 0;
+        margin-bottom: 5px;
+      }
+      .milestone-entry img {
+        max-width: 100%;
+      }
+      #milestone-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+    }
+
+    .form-row {
+    display: flex;
+    align-items: center;
+    }
+
+    .form-row label {
+    margin-right: 10px;
+    width: 80px;
+    }
+
+    .form-row input[type="file"] {
+    margin-top: 10px;
+    }
+    </style>
+  </head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Stylesheets
+    ================================================== -->
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/responsive.css" rel="stylesheet">
+
+
+    <body>
+        <header id="masthead" class="site-header">
+            <nav id="primary-navigation" class="site-navigation">
+                <div class="container">
+
+                    <div class="navbar-header">
+                        <a class="site-title">Keep<span>Paws</span>Posted</a>
+                    </div><!-- /.navbar-header -->
+
+                    <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="milestones.html">Milestones</a></li>
+                            <li><a href="memories.html">Memories</a></li>
+                            <li><a href="https://github.com/kellyye-cal/cs160-paws/" target="_blank">GitHub</a></li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav><!-- /.site-navigation -->
+        </header><!-- /#mastheaed -->
+    
+    <main>
+        <section class="site-section section-features">
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-2">
+                      <h2>Milestones</h2>
+                  </div>
+              </div>
+          </div>
+      </section><!-- /.section-features -->
+        <section id="milestones">
+            <form id="milestone-form">
+                <div class="form-row">
+                  <label for="milestone-name">Name:</label>
+                  <input type="text" id="milestone-name" required>
+                </div>
+                <div class="form-row">
+                  <label for="milestone-date">Date:</label>
+                  <input type="date" id="milestone-date" required>
+                </div>
+                <div class="form-row">
+                  <label for="milestone-description">Description:</label>
+                  <input type="text" id="milestone-description" required>
+                </div>
+                <div class="form-row">
+                  <label for="milestone-image">Image:</label>
+                  <input type="file" id="milestone-image">
+                </div>
+                <button type="submit">Add Milestone</button>
+              </form>
+              
+            <div id="milestone-list"></div>
+          </section>
+          
+          <script>
+            const form = document.getElementById('milestone-form');
+            const list = document.getElementById('milestone-list');
+          
+            form.addEventListener('submit', function(event) {
+              event.preventDefault();
+          
+              // Create a new milestone object with the form data
+              const milestone = {
+                name: document.getElementById('milestone-name').value,
+                date: document.getElementById('milestone-date').value,
+                description: document.getElementById('milestone-description').value,
+                image: document.getElementById('milestone-image').files[0]
+              };
+          
+              // Create a new HTML element to display the milestone
+              const milestoneEntry = document.createElement('div');
+              milestoneEntry.classList.add('milestone-entry');
+          
+              const milestoneName = document.createElement('h3');
+              milestoneName.textContent = milestone.name;
+              milestoneEntry.appendChild(milestoneName);
+          
+              const milestoneDate = document.createElement('p');
+              milestoneDate.textContent = milestone.date;
+              milestoneEntry.appendChild(milestoneDate);
+          
+              const milestoneDescription = document.createElement('p');
+              milestoneDescription.textContent = milestone.description;
+              milestoneEntry.appendChild(milestoneDescription);
+          
+              if (milestone.image) {
+                const milestoneImage = document.createElement('img');
+                milestoneImage.src = URL.createObjectURL(milestone.image);
+                milestoneEntry.appendChild(milestoneImage);
+              }
+          
+              list.appendChild(milestoneEntry);
+          
+              // Clear the form for the next milestone entry
+              form.reset();
+            });
+          </script>          
+    </main>
+    <footer id="colophon" class="site-footer">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4 col-sm-4 col-xs-6">
+                  <a class="site-title">Keep<span>Paws</span>Posted</a>
+                  <p>Built by Andrew Zhang, Anna Zhao, Joey Hou, Kelly Ye, and Lucy Yang for CS 160 (User Interface Design and Development).
+                  </p>
+                  <br>
+                  <ul class="list-unstyled contact-links">
+                      <li><i class="fa fa-map-marker" aria-hidden="true"></i>
+                          <p>University of California, Berkeley</p>
+                      </li>
+                  </ul>
+                  </p>
+              </div>
+          </div>
+      </div>
+  </footer><!-- /#footer -->
+
+
+  <!-- Bootstrap core JavaScript
+================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap-select.min.js"></script>
+  <script src="../js/jquery.slicknav.min.js"></script>
+  <script src="../js/jquery.countTo.min.js"></script>
+  <script src="../js/jquery.shuffle.min.js"></script>
+  <script src="../js/script.js"></script>
+
+</body>
+
+</html>
