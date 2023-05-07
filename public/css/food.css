@@ -142,6 +142,8 @@
 
   .edit-button {
     color: white;
+    font-size: 16px;
+    font-weight: normal;
     background-color: #3492ff;
   }
 
