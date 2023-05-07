@@ -140,6 +140,11 @@
     font-size: 16px;
   }
 
+  .edit-button {
+    color: white;
+    background-color: #3492ff;
+  }
+
   .food-item {
     position: relative;
     max-width: 100%;

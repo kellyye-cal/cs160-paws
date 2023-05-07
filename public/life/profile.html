@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="/css/navbar.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="../js/profile.js"></script>
 <script src="../js/navbar.js"></script>
 
 <!-- <script src="main.js"></script> -->
@@ -31,7 +32,7 @@
     <div class="container">
         <div class="row mt-4 mb-2 title">
             <div class="col-12">
-                Pet's profile
+                Profile
             </div>
         </div>
         <div class="container-fluid rounded section-background pt-2 pb-2">
@@ -42,30 +43,49 @@
                 <div class="col my-auto">
                     <div class="title">Barney</div>
                     <br>
-                    <div class="subtitle">Birthday</div>
-                    <div class="text-gray">Jan 1, 2020</div>
-                    <br>
-                    <div class="subtitle">Weight</div>
-                    <div class="text-gray">10 lbs</div>
+                    <div class="text-black mb-2">Shih Tzu</div>
+                    <div class="text-black mb-2">Female</div>
+                    <div class="text-black mb-2">2 years old</div>
                 </div>
             </div>
         </div>
 
         <div class="row mt-4 mb-2 title">
             <div class="col-12">
-                Information
+                About Me
             </div>
         </div>
         <div class="container rounded pt-2 pb-2" style="border:2px solid #D9D9D9">
-            <div class="col-12 subtitle">
-                About Me
+            <div class="row">
+                <div class="col-9 subtitle">
+                    General Info
+                </div>
+                <div class="col-2 edit-button rounded text-center" id="info-edit">
+                    Edit
+                </div>
             </div>
             <div id="nutrition-overview">
                 <div class="row mt-3">
                     <div class="col-6 text-black-bold">
+                        Birthday
+                    </div>
+                    <div class="col-6 text-black" id="info-1">
+                        Jan. 1, 2020
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6 text-black-bold">
+                        Weight
+                    </div>
+                    <div class="col-6 text-black" id="info-2">
+                        10 lbs
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6 text-black-bold">
                         Favorite Thing
                     </div>
-                    <div class="col-6 text-black">
+                    <div class="col-6 text-black" id="info-3">
                         Playing fetch
                     </div>
                 </div>
@@ -73,7 +93,7 @@
                     <div class="col-6 text-black-bold">
                         Best Friend
                     </div>
-                    <div class="col-6 text-black">
+                    <div class="col-6 text-black" id="info-4">
                         Lucy the dog
                     </div>
                 </div>
@@ -81,7 +101,7 @@
                     <div class="col-6 text-black-bold">
                         Adoption Date
                     </div>
-                    <div class="col-6 text-gray">
+                    <div class="col-6 text-gray" id="info-5">
                         - No data -
                     </div>
                 </div>
@@ -89,7 +109,7 @@
                     <div class="col-6 text-black-bold">
                         Siblings
                     </div>
-                    <div class="col-6 text-gray">
+                    <div class="col-6 text-gray" id="info-6">
                         - No data -
                     </div>
                 </div>
@@ -97,8 +117,63 @@
                     <div class="col-6 text-black-bold">
                         Favorite Food
                     </div>
-                    <div class="col-6 text-gray">
+                    <div class="col-6 text-gray" id="info-7">
                         - No data -
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container rounded amount-change pt-2 pb-2" id="info-change">
+            <div class="col-12 subtitle">
+                Info Change
+            </div>
+            <div class="row align-items-center mt-3 mb-2">
+                <div class="col-9 justify-content-center">
+                    <div class="row">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Item</label>
+                            <select class="form-select" id="inputGroupSelect01">
+                              <option selected>Choose...</option>
+                              <option value="1">Birthday</option>
+                              <option value="2">Weight</option>
+                              <option value="3">Favorite Thing</option>
+                              <option value="4">Best Friend</option>
+                              <option value="5">Adoption Date</option>
+                              <option value="6">Siblings</option>
+                              <option value="7">Favorite Food</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <span class="input-group-text">Info</span>
+                            <input type="text" id="info-change-val" class="form-control" aria-label="Amount">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 justify-content-center">
+                    <div class="row">
+                        <img src="../images/food_confirm.png" id="confirm-info">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container rounded are-you-sure pt-2 pb-2" id="are-you-sure-1">
+            <div class="col-12 subtitle">
+                Are you sure?
+            </div>
+            <div class="row align-items-center mt-3 mb-2">
+                <div class="col-6 justify-content-center are-you-sure-text">
+                    Do you want to delete the data of this item?
+                </div>
+                <div class="col-3 justify-content-center">
+                    <div class="row">
+                        <img src="../images/food_confirm.png" id="confirm-1">
+                    </div>
+                </div>
+                <div class="col-3 justify-content-center">
+                    <div class="row">
+                        <img src="../images/food_cancel.png" id="cancel-1">
                     </div>
                 </div>
             </div>
@@ -165,7 +240,7 @@
                         <img src="../images/info_page_selected.png" class="navbar-item img-responsive">
                     </div>
                     <div class="row justify-content-center navbar-title mt-1 border-white rounded selected-navbar-item">
-                        Pet Info
+                        Profile
                     </div>
                 </div>
                 <div class="col-3 justify-content-center" id="message-page">
