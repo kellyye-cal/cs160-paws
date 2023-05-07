@@ -106,6 +106,40 @@
     font-weight: bold;
   }
 
+  .title-gray {
+    font-family: 'Lexend';
+    text-align: left;
+    color: gray;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: bold;
+  }
+
+  .subtitle-gray {
+    font-family: 'Lexend';
+    text-align: left;
+    color: gray;
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: bold;
+  }
+
+  .text-black-bold {
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .text-black {
+    color: black;
+    font-size: 16px;
+  }
+
+  .text-gray {
+    color: gray;
+    font-size: 16px;
+  }
+
   .food-item {
     position: relative;
     max-width: 100%;
