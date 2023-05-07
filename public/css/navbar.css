@@ -1,0 +1,22 @@
+.navbar-title {
+  color: white;
+}
+
+.navbar-custom {
+  background-color: #3492ff;
+}
+
+.navbar-item {
+  position: relative;
+  max-width: 50%;
+  max-height: 50%;
+}
+
+.selected-navbar-item {
+  background-color: white;
+  color: #3492ff;
+}
+
+.img-responsive {
+  margin:0 auto;
+}
