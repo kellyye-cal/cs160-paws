@@ -32,14 +32,14 @@
     <div class="container">
         <div class="row mt-4 mb-2 title">
             <div class="col-12">
-                Moments
+                Add Moment
             </div>
         </div>
         <div class="container-fluid rounded section-background pt-2 pb-2">
             <form id="milestone-form">
                 <div class="row mt-2 mb-2">
                     <div class="col-4 my-auto text-black-bold">
-                        <label for="milestone-name">Name:</label>
+                        <label for="milestone-name">Name</label>
                     </div>
                     <div class="col-8 my-auto">
                         <input type="text" id="milestone-name" required>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="row mt-2 mb-2">
                     <div class="col-4 my-auto text-black-bold">
-                        <label for="milestone-date">Date:</label>
+                        <label for="milestone-date">Date</label>
                     </div>
                     <div class="col-8 my-auto">
                         <input type="date" id="milestone-date" required>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="row mt-2 mb-2">
                     <div class="col-4 my-auto text-black-bold">
-                        <label for="milestone-description">Description:</label>
+                        <label for="milestone-description">Description</label>
                     </div>
                     <div class="col-8 my-auto">
                         <input type="text" id="milestone-description" required>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="row mt-2 mb-2">
                     <div class="col-4 my-auto text-black-bold">
-                        <label for="milestone-image">Image:</label>
+                        <label for="milestone-image">Image</label>
                     </div>
                     <div class="col-8 my-auto">
                         <input type="file" id="milestone-image">
@@ -72,15 +72,64 @@
                 <div class="row mt-3 mb-2">
                     <div class="col-2"></div>
                     <div class="col-8">
-                        <div class="row">
-                            <button type="submit">Add Milestone</button>
+                        <div class="row pt-1 pb-1">
+                            <button type="submit">Add Moment</button>
                         </div>
                     </div>
                     <div class="col-2"></div>
                 </div>
             </form>
         </div>
-        <div id="milestone-list"></div>
+        <div class="row mt-4 mb-2 title">
+            <div class="col-12">
+                Moments
+            </div>
+        </div>
+        <div class="container rounded pt-2 pb-2" style="border:2px solid #D9D9D9">
+            <div class="container-fluid rounded section-background pt-1 pb-1 mt-2 mb-2">
+                <div class="row mt-2 mb-2">
+                    <img src="/images/pet_picture.jpg" class="d-inline-block align-text-top rounded">
+                </div>
+                <div class="row subtitle">
+                    <div class="col">
+                        Barney
+                    </div>
+                </div>
+                <div class="row text-gray">
+                    <div class="col">
+                        2023/01/01
+                    </div>
+                </div>
+                <br>
+                <div class="row text-black mb-2">
+                    <div class="col">
+                        This is Barney!
+                    </div>
+                </div>   
+            </div>
+            <div class="container-fluid rounded section-background pt-1 pb-1 mt-2 mb-2">
+                <div class="row mt-2 mb-2">
+                    <img src="/images/pet_picture.jpg" class="d-inline-block align-text-top rounded">
+                </div>
+                <div class="row subtitle">
+                    <div class="col">
+                        Barney
+                    </div>
+                </div>
+                <div class="row text-gray">
+                    <div class="col">
+                        2023/01/01
+                    </div>
+                </div>
+                <br>
+                <div class="row text-black mb-2">
+                    <div class="col">
+                        This is Barney!
+                    </div>
+                </div>   
+            </div>
+            <div id="milestone-list"></div>
+        </div>
       
       <script>
         const form = document.getElementById('milestone-form');
