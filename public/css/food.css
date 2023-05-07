@@ -23,6 +23,11 @@
     max-height: 50%;
   }
 
+  .selected-navbar-item {
+    background-color: white;
+    color: #3492ff;
+  }
+
   .img-responsive {
     margin:0 auto;
   }
