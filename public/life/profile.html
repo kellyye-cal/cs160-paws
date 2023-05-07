@@ -180,8 +180,13 @@
         </div>
         <br>
         <div class="container rounded pt-2 pb-2" style="border:2px solid #D9D9D9">
-            <div class="col-12 subtitle">
-                Important Records
+            <div class="row">
+                <div class="col-9 subtitle">
+                    Important Records
+                </div>
+                <div class="col-2 edit-button rounded text-center" id="record-edit">
+                    Edit
+                </div>
             </div>
 
             <div id="nutrition-overview">
@@ -189,7 +194,7 @@
                     <div class="col-6 text-black-bold">
                         Vet Phone
                     </div>
-                    <div class="col-6 text-black">
+                    <div class="col-6 text-black" id="record-1">
                         (123) 456-7890
                     </div>
                 </div>
@@ -197,7 +202,7 @@
                     <div class="col-6 text-black-bold">
                         Pet Insurance
                     </div>
-                    <div class="col-6 text-black">
+                    <div class="col-6 text-black" id="record-2">
                         XYZ Insurance
                     </div>
                 </div>
@@ -205,7 +210,7 @@
                     <div class="col-6 text-black-bold">
                         Medical Cond.
                     </div>
-                    <div class="col-6 text-gray">
+                    <div class="col-6 text-gray" id="record-3">
                         - No data -
                     </div>
                 </div>
@@ -213,7 +218,7 @@
                     <div class="col-6 text-black-bold">
                         Dietary Notes
                     </div>
-                    <div class="col-6 text-gray">
+                    <div class="col-6 text-gray" id="record-4">
                         - No data -
                     </div>
                 </div>
@@ -221,8 +226,61 @@
                     <div class="col-6 text-black-bold">
                         Special Needs
                     </div>
-                    <div class="col-6 text-gray">
+                    <div class="col-6 text-gray" id="record-5">
                         - No data -
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container rounded amount-change pt-2 pb-2" id="record-change">
+            <div class="col-12 subtitle">
+                Record Change
+            </div>
+            <div class="row align-items-center mt-3 mb-2">
+                <div class="col-9 justify-content-center">
+                    <div class="row">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect02">Item</label>
+                            <select class="form-select" id="inputGroupSelect02">
+                              <option selected>Choose...</option>
+                              <option value="1">Vet Phone</option>
+                              <option value="2">Pet Insurance</option>
+                              <option value="3">Medical Cond.</option>
+                              <option value="4">Dietary Notes</option>
+                              <option value="5">Special Needs</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <span class="input-group-text">Record</span>
+                            <input type="text" id="record-change-val" class="form-control" aria-label="Amount">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 justify-content-center">
+                    <div class="row">
+                        <img src="../images/food_confirm.png" id="confirm-record">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container rounded are-you-sure pt-2 pb-2" id="are-you-sure-2">
+            <div class="col-12 subtitle">
+                Are you sure?
+            </div>
+            <div class="row align-items-center mt-3 mb-2">
+                <div class="col-6 justify-content-center are-you-sure-text">
+                    Do you want to delete the data of this item?
+                </div>
+                <div class="col-3 justify-content-center">
+                    <div class="row">
+                        <img src="../images/food_confirm.png" id="confirm-2">
+                    </div>
+                </div>
+                <div class="col-3 justify-content-center">
+                    <div class="row">
+                        <img src="../images/food_cancel.png" id="cancel-2">
                     </div>
                 </div>
             </div>
