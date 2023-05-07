@@ -1,6 +1,6 @@
 let moment_data = [
   ["Barney",
-  "2023/01/01",
+  "2023-01-01",
   "This is Barney!",
   "/images/pet_picture.jpg"
 ]
@@ -41,34 +41,34 @@ function addMoment(name, date, description, image, index) {
           '<div class="col justify-content-center">' +
           '<div class="row mt-2 mb-2">' +
           '<div class="col-4 my-auto text-black-bold">' +
-          '<label for="milestone-name-' + index + '">Name</label>' +
+          '<label for="moments-name-' + index + '">Name</label>' +
           '</div>' +
           '<div class="col-8 my-auto">' +
-          '<input type="text" id="milestone-name-' + index + '" required>' +
+          '<input type="text" id="moments-name-' + index + '" required>' +
           '</div>' +
           '</div>' +
           '<div class="row mt-2 mb-2">' +
           '<div class="col-4 my-auto text-black-bold">' +
-          '<label for="milestone-date-' + index + '">Date</label>' +
+          '<label for="moments-date-' + index + '">Date</label>' +
           '</div>' +
           '<div class="col-8 my-auto">' +
-          '<input type="date" id="milestone-date-' + index + '" required>' +
+          '<input type="date" id="moments-date-' + index + '" required>' +
           '</div>' +
           '</div>' +
           '<div class="row mt-2 mb-2">' +
           '<div class="col-4 my-auto text-black-bold">' +
-          '<label for="milestone-description-' + index + '">Description</label>' +
+          '<label for="moments-description-' + index + '">Description</label>' +
           '</div>' +
           '<div class="col-8 my-auto">' +
-          '<input type="text" id="milestone-description-' + index + '" required>' +
+          '<input type="text" id="moments-description-' + index + '" required>' +
           '</div>' +
           '</div>' +
           '<div class="row mt-2 mb-2">' +
           '<div class="col-4 my-auto text-black-bold">' +
-          '<label for="milestone-image-' + index + '">Image</label>' +
+          '<label for="moments-image-' + index + '">Image</label>' +
           '</div>' +
           '<div class="col-8 my-auto">' +
-          '<input type="file" id="milestone-image-' + index + '">' +
+          '<input type="file" id="moments-image-' + index + '">' +
           '</div>' +
           '</div>' +
           '</div>' +
@@ -132,7 +132,15 @@ $(document).ready(function(){
     let index = array[array.length - 1];
 
     let menu_index = "#moment-change-" + index;
+    let name = "#moments-name-" + index;
+    let date = "#moments-date-" + index;
+    let description = "#moments-description-" + index;
+    // let image = "#moments-image-" + index;
+
     if ( $(menu_index).first().is( ":hidden" ) ) {
+      $(name).val(moment_data[parseInt(index) - 1][0].trim());
+      $(date).val(moment_data[parseInt(index) - 1][1].trim());
+      $(description).val(moment_data[parseInt(index) - 1][2].trim());
       $(menu_index).slideDown("slow");
     } else {
       $(menu_index).slideUp("slow");
@@ -152,6 +160,15 @@ $(document).ready(function(){
     }
   });
 
+  // CONFIRM CHANGE
+  $(document.body).on('click', '.confirm-moment' ,function(){
+    let array = $(this).attr("id").split("-");
+    let index = array[array.length - 1];
+
+    let menu_index = "#moment-change-" + index;
+    $(menu_index).slideUp("slow");
+  });
+
   // DELETE MOMENT MENU
   $(document.body).on('click', '.confirm-delete' ,function(){
     let array = $(this).attr("id").split("-");
@@ -159,8 +176,14 @@ $(document).ready(function(){
 
     let menu_index = "#moment-change-" + index;
     let are_you_sure_index = "#are-you-sure-" + index;
+
+    moment_data.splice(parseInt(index-1), 1);
+    moment_length -= 1;
+
     $(menu_index).slideUp("slow");
     $(are_you_sure_index).slideUp("slow");
+
+    initialize();
   });
   $(document.body).on('click', '.cancel-delete' ,function(){
     let array = $(this).attr("id").split("-");
