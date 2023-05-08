@@ -13,14 +13,9 @@ function addMoment(name, date, description, image, index) {
           '<div class="row mt-2 mb-2">' +
           '<img src="' + image + '" class="d-inline-block align-text-top rounded" id="moment-image-' + index + '">' +
           '</div>' + 
-          '<div class="row subtitle">' +
-          '<div class="col-9" id="moment-name-' + index + '">' +
-          name +
-          '</div>' +
-          '<div class="col-2 edit-button rounded text-center" id="moment-edit-' + index + '">' +
-          'Edit' +
-          '</div>' +
-          '</div>' +
+          '<div class="horizontal-space mt-2"> <div class="subtitle" style="margin: 0">' +
+          name + 
+          '</div> <div class="edit-button rounded text-center" id="moment-edit-' + index + '">Edit</div></div>' +
           '<div class="row text-gray">' +
           '<div class="col" id="moment-date-' + index + '">' +
           date +

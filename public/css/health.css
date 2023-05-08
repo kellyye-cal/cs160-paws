@@ -55,6 +55,28 @@
   font-weight: bold;
 }
 
+.app-add {
+  background-color: #D9D9D9;
+  border-width: 2px;
+  border-color: #D9D9D9;
+}
+
+.app-edit {
+  background-color: #D9D9D9;
+  border-width: 2px;
+  border-color: #D9D9D9;
+}
+
+.are-you-sure {
+  background-color: #F34B50;
+  border-width: 2px;
+  border-color: #D9D9D9;
+}
+
+.are-you-sure-text {
+  color: white;
+}
+
 .active {
   border-radius: 8px 8px 0px 0px;
   margin-bottom: 0px;
