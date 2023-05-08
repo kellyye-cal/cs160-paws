@@ -1,7 +1,8 @@
 let app_data = [
-  ["Leg Surgery Follow-Up", "2023-04-13", "16:00", "Jiang"]
+  ["Leg Surgery Follow-Up", "2023-04-13", "16:00", "Jiang"],
+  ["Yearly Vaccinatins", "2023-05-20", "12:00", "Zhou"]
 ];
-let app_length = 1;
+let app_length = 2;
 const month_name = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 function addApp(name, date, time, doctor, index) {
