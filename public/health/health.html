@@ -30,42 +30,41 @@
     <br>
     <br>
     <div>
-        <h1> Barney's Daily View </h1>
-
-        <div>
-            <h2> Medications </h2>
-            
-            <div class="meds-container">
-                <label class="meds">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                    Arthritis Medication
-                </label>
-
-                <label class="meds">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                    Canine Aspirin - AM
-                </label>
-
-                <label class="meds">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                    Canine Aspirin - PM
-                </label>
-            </div>
+        <div class="row mt-4 mb-2">
+            <div class="title">Barney's Daily View</div>
         </div>
 
-        <div>
-            <h2> <label> Notes </label></h2>
-            <textarea id="notes-box" placeholder="Touch to start typing..."></textarea>
-                
-            </div>
+        <div class="row mt-2 mb-3">
+            <div class="subtitle-gray">Medications</div>
         </div>
+        <label class="meds">
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+            <div class="subtitle"> Arthritis Medication</div>
+        </label>
+
+        <label class="meds">
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+            <div class="subtitle">Canine Aspirin - AM</div>
+        </label>
+
+        <label class="meds">
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+            <div class="subtitle">Canine Aspirin - PM</div>
+        </label>
+
+        <div class="row mt-2 mb-3">
+            <div class="subtitle-gray">Notes</div>
+        </div>
+        <textarea id="notes-box" placeholder="Touch to start typing..."></textarea>
     </div>
 
     <div>
-        <h1> Barney's Treatments </h1>
+        <div class="row mt-4 mb-2">
+            <div class="title">Barney's Treatments</div>
+        </div>
         <button type="button" class="treatment"> Arthritis </button>
         <div class="treatment-content"> 
             <div style="margin: 8px 0px"> <b> Treatment Timeline: </b> <span> Feb 2023 - May 2023 </span> </div>
@@ -94,9 +93,11 @@
     </div>
 
     <div>
-        <h1> Vethub </h1>
+        <div class="row mt-4 mb-4">
+            <div class="title">Vethub</div>
+        </div>
         <div class="outline">
-            <div class="horizontal-space"> <h3 style="line-height: 56px; margin: 0"> Appointments </h3> <div class="schedule-button"> &#43 Schedule </div></div>
+            <div class="horizontal-space mt-2 mb-2"> <div class="subtitle" style="margin: 0">Appointments</div> <div class="schedule-button">&#43 Schedule</div></div>
             
             <div class="horizontal-space" style="align-items: center">
                 <div class="appt">
@@ -105,7 +106,7 @@
                     </div>
 
                     <div>
-                        <b class="appt-name"> Leg Surgery Follow-Up</b>
+                        <b class="appt-name">Leg Surgery Follow-Up</b>
                         <p class="appt-details"> 4:00pm &#x2022; Doctor Jiang</p>
                     </div>
                 </div>
@@ -130,7 +131,7 @@
         </div>
 
         <div class="outline">
-            <h3> Vaccinations </h3>
+            <div class="horizontal-space mt-2 mb-2"> <div class="subtitle" style="margin: 0">Vaccination</div> <div class="schedule-button">&#43 Add</div></div>
             <div class="horizontal-space" style="align-items: center;">
                 <div class="appt">
                     <img src="/images/vaccine.png">
@@ -194,7 +195,7 @@
     </div>
 
     <div>
-        <div class="horizontal-space" style="align-items: center"> <h1> Daily Logs </h1> <div class="filter-button"> Filter </div></div>
+        <div class="horizontal-space mt-4 mb-2" style="align-items: center"> <div class="title">Vethub</div> <div class="filter-button"> Filter </div></div>
 
         <div class="horizontal-space gray-bg logs" style="align-items: center;">
             <div class="log">
