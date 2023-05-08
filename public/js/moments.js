@@ -2,7 +2,7 @@ let moment_data = [
   ["Barney",
   "2023-01-01",
   "This is Barney!",
-  "/images/pet_picture.jpg"
+  "/images/pet_picture_1.png"
 ]
 ]
 let moment_length = 1;
@@ -38,6 +38,7 @@ function addMoment(name, date, description, image, index) {
           'Moment Change' +
           '</div>' +
           '<div class="row align-items-center mt-3 mb-2">' +
+          '<form id="moments-form-' + index + '">' +
           '<div class="col justify-content-center">' +
           '<div class="row mt-2 mb-2">' +
           '<div class="col-4 my-auto text-black-bold">' +
@@ -72,6 +73,7 @@ function addMoment(name, date, description, image, index) {
           '</div>' +
           '</div>' +
           '</div>' +
+          '</form>' + 
           '</div>' +
           '<div class="row">' +
           '<div class="col-6"></div>' +
@@ -121,10 +123,30 @@ $(document).ready(function(){
         $("#moment-list").append(addMoment(moment_data[i][0], moment_data[i][1], moment_data[i][2], moment_data[i][3], i+1));
       }
     }
+
+    $(".moment-change").hide();
+    $(".are-you-sure").hide();
   }
+
   initialize();
-  $(".moment-change").hide();
-  $(".are-you-sure").hide();
+
+  // SUBMIT NEW MOMENT
+  $(document.body).on('click', '#submit-moment' ,function(){
+    if ($("#new-form").valid()) {
+      if ($("#new-image").val() == "") {
+        alert("Please select an image before submitting!");
+      } else {
+        let image_path = "/images/pet_picture_" + (moment_length+1).toString() + ".png";
+        let res = [$("#new-name").val(), $("#new-date").val(), $("#new-description").val(), image_path];
+        moment_data.push(res);
+        moment_length += 1;
+        initialize();
+        $("#new-form").get(0).reset()
+      }
+    } else {
+      alert("Do not leave blanks before submitting!");
+    }
+  });
 
   // MOMENT CHANGE MENU
   $(document.body).on('click', '.edit-button' ,function(){
@@ -166,7 +188,36 @@ $(document).ready(function(){
     let index = array[array.length - 1];
 
     let menu_index = "#moment-change-" + index;
-    $(menu_index).slideUp("slow");
+    let form_index = "#moments-form-" + index;
+
+    let name = "#moments-name-" + index;
+    let date = "#moments-date-" + index;
+    let description = "#moments-description-" + index;
+    let image = "#moments-image-" + index;
+
+    if ($(form_index).valid()) {
+      if ($(image).val() == "") {
+        alert("Please select an image before submitting!");
+      } else {
+
+        // DEMO PURPOSE
+        let image_path = "";
+        if (index == "1") {
+          image_path = "/images/pet_picture_2.png";
+        } else {
+          image_path = "/images/pet_picture_1.png";
+        }
+
+        moment_data[parseInt(index)-1][0] = $(name).val();
+        moment_data[parseInt(index)-1][1] = $(date).val();
+        moment_data[parseInt(index)-1][2] = $(description).val();
+        moment_data[parseInt(index)-1][3] = image_path;
+        $(menu_index).slideUp("slow");
+        initialize();
+      }
+    } else {
+      alert("Do not leave blanks before submitting!");
+    }
   });
 
   // DELETE MOMENT MENU

@@ -14,6 +14,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="../js/moments.js"></script>
 <script src="../js/navbar.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 
 <!-- <script src="main.js"></script> -->
 </head>
@@ -36,44 +37,44 @@
             </div>
         </div>
         <div class="container-fluid rounded section-background pt-2 pb-2">
-            <form id="milestone-form">
+            <form id="new-form">
                 <div class="row mt-2 mb-2">
                     <div class="col-4 my-auto text-black-bold">
-                        <label for="milestone-name">Name</label>
+                        <label for="new-name">Name</label>
                     </div>
                     <div class="col-8 my-auto">
-                        <input type="text" id="milestone-name" required>
+                        <input type="text" id="new-name" required>
                     </div>
                 </div>
                 <div class="row mt-2 mb-2">
                     <div class="col-4 my-auto text-black-bold">
-                        <label for="milestone-date">Date</label>
+                        <label for="new-date">Date</label>
                     </div>
                     <div class="col-8 my-auto">
-                        <input type="date" id="milestone-date" required>
+                        <input type="date" id="new-date" required>
                     </div>
                 </div>
                 <div class="row mt-2 mb-2">
                     <div class="col-4 my-auto text-black-bold">
-                        <label for="milestone-description">Description</label>
+                        <label for="new-description">Description</label>
                     </div>
                     <div class="col-8 my-auto">
-                        <input type="text" id="milestone-description" required>
+                        <input type="text" id="new-description" required>
                     </div>
                 </div>
                 <div class="row mt-2 mb-2">
                     <div class="col-4 my-auto text-black-bold">
-                        <label for="milestone-image">Image</label>
+                        <label for="new-image">Image</label>
                     </div>
                     <div class="col-8 my-auto">
-                        <input type="file" id="milestone-image">
+                        <input type="file" id="new-image">
                     </div>
                 </div>
                 <div class="row mt-3 mb-2">
                     <div class="col-2"></div>
                     <div class="col-8">
                         <div class="row pt-1 pb-1">
-                            <button type="submit">Add Moment</button>
+                            <button type="submit" id="submit-moment">Add Moment</button>
                         </div>
                     </div>
                     <div class="col-2"></div>
@@ -194,49 +195,6 @@
             <div id="milestone-list"></div>
         </div>
       
-      <script>
-        const form = document.getElementById('milestone-form');
-        const list = document.getElementById('milestone-list');
-      
-        form.addEventListener('submit', function(event) {
-          event.preventDefault();
-      
-          // Create a new milestone object with the form data
-          const milestone = {
-            name: document.getElementById('milestone-name').value,
-            date: document.getElementById('milestone-date').value,
-            description: document.getElementById('milestone-description').value,
-            image: document.getElementById('milestone-image').files[0]
-          };
-      
-          // Create a new HTML element to display the milestone
-          const milestoneEntry = document.createElement('div');
-          milestoneEntry.classList.add('milestone-entry');
-      
-          const milestoneName = document.createElement('h3');
-          milestoneName.textContent = milestone.name;
-          milestoneEntry.appendChild(milestoneName);
-      
-          const milestoneDate = document.createElement('p');
-          milestoneDate.textContent = milestone.date;
-          milestoneEntry.appendChild(milestoneDate);
-      
-          const milestoneDescription = document.createElement('p');
-          milestoneDescription.textContent = milestone.description;
-          milestoneEntry.appendChild(milestoneDescription);
-      
-          if (milestone.image) {
-            const milestoneImage = document.createElement('img');
-            milestoneImage.src = URL.createObjectURL(milestone.image);
-            milestoneEntry.appendChild(milestoneImage);
-          }
-      
-          list.appendChild(milestoneEntry);
-      
-          // Clear the form for the next milestone entry
-          form.reset();
-        });
-      </script>  
       </div>        
         <br>
         <br>
