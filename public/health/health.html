@@ -36,31 +36,67 @@
             <div class="title">Barney's Daily View</div>
         </div>
 
-        <div class="row mt-2 mb-3">
-            <div class="subtitle-gray">Medications</div>
+        <div class="container rounded pt-1 pb-2" style="border:2px solid #D9D9D9">
+            <div class="row mt-2 mb-3">
+                <div class="subtitle">Medications</div>
+            </div>
+            <label class="meds">
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+                <div class="text-black"> Arthritis Medication</div>
+            </label>
+    
+            <label class="meds">
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+                <div class="text-black">Canine Aspirin - AM</div>
+            </label>
+    
+            <label class="meds">
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+                <div class="text-black">Canine Aspirin - PM</div>
+            </label>
+            <div class="row mt-2 mb-2">
+                <div class="subtitle">Pain Level</div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label class="meds">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                        <img src="/images/happy.png">
+                    </label>
+                </div>
+                <div class="col-4">
+                    <label class="meds">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <img src="/images/mild.png">
+                    </label>
+                </div>
+                <div class="col-4">
+                    <label class="meds">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <img src="/images/sad.png">
+                    </label>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="subtitle">Notes</div>
+            </div>
+            <textarea id="notes-box" placeholder="Touch to start typing..."></textarea>
+            <div class="row mt-3 mb-2">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="row pt-1 pb-1">
+                        <button type="submit" id="submit-log">Add Daily Log</button>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
         </div>
-        <label class="meds">
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>
-            <div class="subtitle"> Arthritis Medication</div>
-        </label>
-
-        <label class="meds">
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>
-            <div class="subtitle">Canine Aspirin - AM</div>
-        </label>
-
-        <label class="meds">
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>
-            <div class="subtitle">Canine Aspirin - PM</div>
-        </label>
-
-        <div class="row mt-2 mb-3">
-            <div class="subtitle-gray">Notes</div>
-        </div>
-        <textarea id="notes-box" placeholder="Touch to start typing..."></textarea>
     </div>
 
     <div>

@@ -55,6 +55,11 @@
   font-weight: bold;
 }
 
+.text-black {
+  color: black;
+  font-size: 16px;
+}
+
 .app-add {
   background-color: #D9D9D9;
   border-width: 2px;
