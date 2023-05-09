@@ -259,8 +259,38 @@
     </div>
 
     <div>
-        <div class="horizontal-space mt-4 mb-2" style="align-items: center"> <div class="title">Daily Logs</div> <div class="filter-button"> Filter </div></div>
+        <div class="horizontal-space mt-4 mb-2" style="align-items: center"> <div class="title">Daily Logs</div> <div class="filter-button" id="filter-button"> Filter </div></div>
 
+        <div class="container rounded filter pt-2 pb-2" id="filter">
+            <div class="col-12 subtitle">
+                Filter
+            </div>
+            <div class="row align-items-center mt-3 mb-2">
+                <div class="col-9 justify-content-center">
+                    <div class="row">
+                        <div class="input-group mb-3">
+                            <select class="form-select" id="inputGroupSelect01">
+                              <option value="0" selected>Choose the filter:</option>
+                              <option value="1">All</option>
+                              <option value="0">---Medication---</option>
+                              <option value="2">Took Arthritis</option>
+                              <option value="3">Took Aspirin AM</option>
+                              <option value="4">Took Aspirin PM</option>
+                              <option value="0">---Pain Level---</option>
+                              <option value="5">Happy</option>
+                              <option value="6">Mild</option>
+                              <option value="7">Sad</option>
+                            </select>
+                          </div>
+                    </div>
+                </div>
+                <div class="col-3 justify-content-center">
+                    <div class="row">
+                        <img src="../images/food_confirm.png" id="confirm-filter">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="scrolling-wrapper row flex-row flex-nowrap justify-content-center mt-3 mb-3" id="no-log">
             There is no log.
         </div>

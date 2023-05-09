@@ -72,6 +72,12 @@
   border-color: #D9D9D9;
 }
 
+.filter {
+  background-color: #D9D9D9;
+  border-width: 2px;
+  border-color: #D9D9D9;
+}
+
 .are-you-sure {
   background-color: #F34B50;
   border-width: 2px;

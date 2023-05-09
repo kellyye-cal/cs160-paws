@@ -18,6 +18,10 @@ let log_data = [
   ["2023-04-13", 7, 0, "Barney was good all day."], 
   ["2023-04-12", 7, 0, "Barney was good all day."]
 ];
+let log_data_filtered = [
+];
+let current_filter = 0;
+
 let log_length = 8;
 const pain_map = ["happy", "mild", "sad"];
 const medication_map = ["Took no medication today",
@@ -144,8 +148,52 @@ function addLog(date, medication, pain, notes, index){
 }
 
 $(document).ready(function(){
+  function updateFilter(selection) {
+    log_data_filtered = [];
+    // let index = $("#inputGroupSelect01").value;
+    for (let i = 0; i < log_length; i++) {
+      if (selection == 0) {
+        log_data_filtered.push(log_data[i]);
+      }
+      if (selection == 1) {
+        log_data_filtered.push(log_data[i]);
+      }
+      if (selection == 2) {
+        if (log_data[i][1] == 1 || log_data[i][1] == 3 || log_data[i][1] == 5 || log_data[i][1] == 7) {
+          log_data_filtered.push(log_data[i]);
+        }
+      }
+      if (selection == 3) {
+        if (log_data[i][1] == 2 || log_data[i][1] == 3 || log_data[i][1] == 6 || log_data[i][1] == 7) {
+          log_data_filtered.push(log_data[i]);
+        }
+      }
+      if (selection == 4) {
+        if (log_data[i][1] == 4 || log_data[i][1] == 5 || log_data[i][1] == 6 || log_data[i][1] == 7) {
+          log_data_filtered.push(log_data[i]);
+        }
+      }
+      if (selection == 5) {
+        if (log_data[i][2] == 0) {
+          log_data_filtered.push(log_data[i]);
+        }
+      }
+      if (selection == 6) {
+        if (log_data[i][2] == 1) {
+          log_data_filtered.push(log_data[i]);
+        }
+      }
+      if (selection == 7) {
+        if (log_data[i][2] == 2) {
+          log_data_filtered.push(log_data[i]);
+        }
+      }
+    }
+  }
 
   function initialize() {
+    updateFilter(current_filter);
+
     if ($("#happy").is(":checked")) {
       $("#mild").prop('checked', false);
       $("#sad").prop('checked', false);
@@ -164,12 +212,12 @@ $(document).ready(function(){
 
     $("#log-list").empty();
 
-    if (log_length == 0) {
+    if (log_data_filtered.length == 0) {
       $("#no-log").show();
     } else {
       $("#no-log").hide();
-      for (let i = 0; i < log_length; i++) {
-        $("#log-list").append(addLog(log_data[i][0], log_data[i][1], log_data[i][2], log_data[i][3], i+1));
+      for (let i = 0; i < log_data_filtered.length; i++) {
+        $("#log-list").append(addLog(log_data_filtered[i][0], log_data_filtered[i][1], log_data_filtered[i][2], log_data_filtered[i][3], i+1));
       }
     }
     $("#notes-box").val("");
@@ -178,6 +226,7 @@ $(document).ready(function(){
     $(".app-add").hide();
     $(".app-edit").hide();
     $(".are-you-sure").hide();
+    $(".filter").hide();
   }
 
   initialize();
@@ -195,6 +244,9 @@ $(document).ready(function(){
     if ($('#sad').is(":checked")){pain = 2;};
 
     let notes = $("#notes-box").val();
+    if (notes == "") {
+      notes = "- No data -";
+    }
 
     let d = new Date();
     let month = d.getMonth()+1;
@@ -335,5 +387,22 @@ $(document).ready(function(){
       let are_you_sure_index = "#are-you-sure-app-" + index;
       $(are_you_sure_index).slideUp("slow");
     });
+
+  // FILTER
+  $(document.body).on('click', '#filter-button' ,function(){
+    if ( $("#filter").first().is( ":hidden" ) ) {
+      $("#filter").slideDown("slow");
+    } else {
+      $("#filter").slideUp("slow");
+    }
+  });
+
+  $(document.body).on('click', '#confirm-filter' ,function(){
+    current_filter = $("#inputGroupSelect01").first().val();
+
+    $("#filter").slideUp("slow", function(){
+      initialize();
+    });
+  });
 
 });
