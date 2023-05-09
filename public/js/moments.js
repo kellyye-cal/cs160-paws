@@ -136,7 +136,8 @@ $(document).ready(function(){
         moment_data.push(res);
         moment_length += 1;
         initialize();
-        $("#new-form").get(0).reset()
+        $("#new-form").get(0).reset();
+        alert("Moment added successfully!")
       }
     } else {
       alert("Do not leave blanks before submitting!");

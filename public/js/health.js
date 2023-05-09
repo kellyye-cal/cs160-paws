@@ -4,6 +4,30 @@ let app_data = [
 ];
 let app_length = 2;
 const month_name = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const day_name = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th",
+"11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th",
+"21st", "22nd", "23rd", "24th", "25th", "26th", "27th", "28th", "29th", "30th", "31st"];
+
+let log_data = [
+  ["2023-04-19", 7, 0, "Barney was good all day."],
+  ["2023-04-18", 7, 1, "Barney was a bit uncomfortable."],
+  ["2023-04-17", 7, 0, "Barney was good all day."],
+  ["2023-04-16", 7, 0, "Barney was good all day."],
+  ["2023-04-15", 7, 1, "Barney was a bit uncomfortable."],
+  ["2023-04-14", 5, 0, "Barney was good all day."], 
+  ["2023-04-13", 7, 0, "Barney was good all day."], 
+  ["2023-04-12", 7, 0, "Barney was good all day."]
+];
+let log_length = 8;
+const pain_map = ["happy", "mild", "sad"];
+const medication_map = ["Took no medication today",
+"Only took arthritis",
+"Only took aspirin AM",
+"Did not take aspirin PM",
+"Only took aspirin PM",
+"Did not take aspirin AM",
+"Did not take arthritis",
+"Took all medications"];
 
 function addApp(name, date, time, doctor, index) {
   let array = date.split("-");
@@ -99,9 +123,34 @@ function addApp(name, date, time, doctor, index) {
           '</div>';
 };
 
+function addLog(date, medication, pain, notes, index){
+  let array = date.split("-");
+  let year = parseInt(array[0]);
+  let month = parseInt(array[1]);
+  let day = parseInt(array[2]);
+  return '<div class="horizontal-space gray-bg logs" style="align-items: center;" id="log-' + index + '">' +
+          '<div class="log">' + 
+          '<img src="/images/' + pain_map[pain] + '.png" class="face">' +
+          '<div>' + 
+          '<b class="appt-name">' + month_name[month-1] + '. ' + day_name[day-1] + ', ' + year + '</b>' +
+          '<p class="appt-details"> ' + medication_map[medication] + ' </p>' +
+          '</div>' +
+          '</div>' +
+          '<p class="view-notes" id="view-notes-' + index + '"> View Notes </p>' +
+          '</div>' +
+          '<div class="horizontal-space gray-bg logs note" style="align-items: center;" id="note-' + index + '">' +
+          notes +
+          '</div>';
+}
+
 $(document).ready(function(){
 
   function initialize() {
+    if ($("#happy").is(":checked")) {
+      $("#mild").prop('checked', false);
+      $("#sad").prop('checked', false);
+    }
+
     $("#app-list").empty();
 
     if (app_length == 0) {
@@ -113,6 +162,19 @@ $(document).ready(function(){
       }
     }
 
+    $("#log-list").empty();
+
+    if (log_length == 0) {
+      $("#no-log").show();
+    } else {
+      $("#no-log").hide();
+      for (let i = 0; i < log_length; i++) {
+        $("#log-list").append(addLog(log_data[i][0], log_data[i][1], log_data[i][2], log_data[i][3], i+1));
+      }
+    }
+    $("#notes-box").val("");
+
+    $(".note").hide();
     $(".app-add").hide();
     $(".app-edit").hide();
     $(".are-you-sure").hide();
@@ -120,6 +182,50 @@ $(document).ready(function(){
 
   initialize();
 
+  $(document.body).on('click', '#submit-log' ,function(){
+    let medication = 0;
+    let pain = 0;
+
+    if ($('#med-1').is(":checked")){medication += 4;};
+    if ($('#med-2').is(":checked")){medication += 2;};
+    if ($('#med-3').is(":checked")){medication += 1;};
+
+    if ($('#happy').is(":checked")){pain = 0;};
+    if ($('#mild').is(":checked")){pain = 1;};
+    if ($('#sad').is(":checked")){pain = 2;};
+
+    let notes = $("#notes-box").val();
+
+    let d = new Date();
+    let month = d.getMonth()+1;
+    let day = d.getDate();
+
+    let date = d.getFullYear() + '-' +
+        (month<10 ? '0' : '') + month + '-' +
+        (day<10 ? '0' : '') + day;
+
+    let day_log = [date, medication, pain, notes];
+    log_data.unshift(day_log);
+    log_length += 1;
+    initialize();
+    alert("Log added successfully!")
+  });
+
+  $(document.body).on('click', '.view-notes' ,function(){
+    let array = $(this).attr("id").split("-");
+    let index = array[array.length - 1];
+
+    let note_index = "#note-" + index;
+    let button_index = "#view-notes-" + index;
+
+    if ( $(note_index).first().is( ":hidden" ) ) {
+      $(note_index).slideDown("slow");
+      $(button_index).text("Close Notes");
+    } else {
+      $(note_index).slideUp("slow");
+      $(button_index).text("View Notes");
+    }
+  });
   $(document.body).on('click', '.app-edit-button' ,function(){
     let array = $(this).attr("id").split("-");
     let index = array[array.length - 1];

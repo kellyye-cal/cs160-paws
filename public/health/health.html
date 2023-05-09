@@ -41,19 +41,19 @@
                 <div class="subtitle">Medications</div>
             </div>
             <label class="meds">
-                <input type="checkbox" checked="checked">
+                <input type="checkbox" id="med-1" checked="checked">
                 <span class="checkmark"></span>
                 <div class="text-black"> Arthritis Medication</div>
             </label>
     
             <label class="meds">
-                <input type="checkbox" checked="checked">
+                <input type="checkbox" id="med-2" checked="checked">
                 <span class="checkmark"></span>
                 <div class="text-black">Canine Aspirin - AM</div>
             </label>
     
             <label class="meds">
-                <input type="checkbox" checked="checked">
+                <input type="checkbox" id="med-3" checked="checked">
                 <span class="checkmark"></span>
                 <div class="text-black">Canine Aspirin - PM</div>
             </label>
@@ -63,21 +63,21 @@
             <div class="row">
                 <div class="col-4">
                     <label class="meds">
-                        <input type="checkbox" checked="checked">
+                        <input class="radio" type="radio" name="pain-level" id="happy" checked="checked">
                         <span class="checkmark"></span>
                         <img src="/images/happy.png">
                     </label>
                 </div>
                 <div class="col-4">
                     <label class="meds">
-                        <input type="checkbox">
+                        <input class="radio" type="radio" name="pain-level" id="mild">
                         <span class="checkmark"></span>
                         <img src="/images/mild.png">
                     </label>
                 </div>
                 <div class="col-4">
                     <label class="meds">
-                        <input type="checkbox">
+                        <input class="radio" type="radio" name="pain-level" id="sad">
                         <span class="checkmark"></span>
                         <img src="/images/sad.png">
                     </label>
@@ -261,7 +261,12 @@
     <div>
         <div class="horizontal-space mt-4 mb-2" style="align-items: center"> <div class="title">Daily Logs</div> <div class="filter-button"> Filter </div></div>
 
-        <div class="horizontal-space gray-bg logs" style="align-items: center;">
+        <div class="scrolling-wrapper row flex-row flex-nowrap justify-content-center mt-3 mb-3" id="no-log">
+            There is no log.
+        </div>
+
+        <div id="log-list">
+        <div class="horizontal-space gray-bg logs" style="align-items: center;" id="log-1">
             <div class="log">
                 <img src="/images/happy.png" class="face">
                 <div>
@@ -270,7 +275,10 @@
                 </div>
             </div>
 
-            <p> View Notes </p>
+            <p class="view-notes" id="view-notes-1"> View Notes </p>
+        </div>
+        <div class="horizontal-space gray-bg logs note" style="align-items: center;" id="note-1">
+            Barney is good all day.
         </div>
 
         <div class="horizontal-space gray-bg logs" style="align-items: center;">
@@ -356,6 +364,7 @@
 
             <p> View Notes </p>
         </div>
+    </div>
     </div>
     <br>
     <br>
