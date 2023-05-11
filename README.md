@@ -23,7 +23,21 @@ Make sure you have Node installed. In the correct directory, run
 node App.js
  ```
  
- ### Collaborators
+# Notes for Display
+
+This app is designed for smartphones, and the major testing device is an iPhone 13 Pro. Some of the implementations show the best on this device, and some of those may shown in wrong proportion on other smartphones or on a desktop. 
+
+# Implemented functions
+
+This app has a profile page for the pet and three sections that manage different aspects of the pet. The user can navigate between the profile and the other sections by tapping on the navbar at the bottom of the screen.
+
+# Using this app: a complete walkthrough
+
+## Loading screen
+
+
+ 
+# Collaborators
  
 - Joey Hou
 - Lucy Yang
