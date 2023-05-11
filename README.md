@@ -27,11 +27,11 @@ node App.js
 
 This app is designed for smartphones, and the major testing device is an iPhone 13 Pro. Some of the implementations show the best on this device, and some of those may shown in wrong proportion on other smartphones or on a desktop. 
 
-# Implemented functions
+# Using this app: a complete walkthrough
+
+## Implemented functions & Navbars
 
 This app has a profile page for the pet and three sections that manage different aspects of the pet. The user can navigate between the profile and the other sections by tapping on the navbar at the bottom of the screen. The selected navbar item will be highlighted with a colored image instead of one in white.
-
-# Using this app: a complete walkthrough
 
 ## Loading screen
 
@@ -52,6 +52,20 @@ This is a page where the user can view moments of the pet and add more posts. A 
 For the second part "Moments", the user can edit or delete any moments. They can first tap on the "Edit" button on the right of the moment card and a "Moment Change" menu will drop down. The saved item values will appear in the textboxs, and the user will again need to finish all sections to edit the moment.
 
 The user can also delete a moment by entering the "Moment Change" menu after tapping on the "Edit" button. There is a trash can button that deletes the post. After tapping the delete button, there will be a warning prompt in red background dropping down that reminds the user to confrim deletion. If the user deletes all moments, the text "There is no moment." will show in the "Moments" section.
+
+## Health
+
+This is a page where the user can view a summarized list of health related records.
+
+The first part "Barney's Daily View" is a form that generates a log entry to the last part of this page. The user can select the medication taken by the pet by checking and unchecking three "Medications" items. Then, the user can select the pain level of the pet by selecting one of the three emojis. The user can choose to enter some notes or to submit without any. By tapping the "Add Daily Log" button, a log with the date today will be added to the start of the "Daily Logs" list at the end of this page.
+
+The second part "Barney's Treatments" allows the user to see treatments of the pet. The user can see details by tapping on the plus mark. When the menu is expanded, the plus mark will become a minus mark, and tapping that will make the menu folded back.
+
+The third part "Vethub" has two subparts, "Appointments and "Vaccination". the user can add new appointments by tapping on the "+ Schedule" button next to the subtitle "Appointments". Then, a menu "Schedule Appointment" will slide down. If the user leaves any blanks and clicked on the check mark to submit, the app will alert "Do not leave blanks before submitting!" and submits nothing. If the form is finished and the user submits the appointment, the new appointment will appear at the end of the appointments list. 
+
+The user is also able to edit existing appointments or to delete them by tapping on the "Edit" next to each appointment entry. When the user taps on "Edit", a menu "Edit Appointment" will slide down with pre-filled value. The user can also delete an appointment entry by tapping on the trash can button. A warning menu in red background will appear, and the user can decide to cancel deletion and edit more or to delete the item. When all appointments are deleted, the text "There is no appointment." will show in the part where entries show appear.
+
+The "Vaccination" subpart shows a list of vaccinations that the pet has taken. There will be comments on the expiration dates, and items that will expire soon or non-compliant will be shown in red. Normal items are in green.
 
  
 # Collaborators
