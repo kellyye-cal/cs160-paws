@@ -24,10 +24,11 @@ node App.js
  ```
  
  ### Collaborators
+ 
+- Joey Hou
+- Lucy Yang
+- Kelly Ye
 - Andrew Zhang
 - Anna Zhao
-- Joey Hou
-- Kelly Ye
-- Lucy Yang
 
 Created for CS 160 (User Interface Design) at UC Berkeley, Spring 2023
