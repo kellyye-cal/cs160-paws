@@ -67,6 +67,22 @@ The user is also able to edit existing appointments or to delete them by tapping
 
 The "Vaccination" subpart shows a list of vaccinations that the pet has taken. There will be comments on the expiration dates, and items that will expire soon or non-compliant will be shown in red. Normal items are in green.
 
+The fourth part "Daily Logs" is a list of all log entries. The user can view notes of each log entry by tapping the "View Notes" to see the notes in a new menu sliding down. If there is no notes entered for the log entry, the texts "- No data -" will show instead. The user can filter out certain log entries by tapping on the "Filter" button and a menu will slide down. The user can then select a filter from the dropdown menu and then tap on the confirm button to apply the filter. The user can tap on the "Fliter" again to stow the menu back.
+
+The second
+
+## Nutrition
+
+This is a page for the user to manage the pet's meal, view nutrition analysis, and take food suggestions.
+
+The first part "Meals" has the list of food items and their amount. The user can add food items to this list by tapping on the "Add..." button. A menu "Add an item" will slide down, and the user can select a food item from the list. If there are more than four food items in the list, the user will be able to slide left and right to view more items. The "Add..." button will also change to a "Close" button when the menu is dropped down. When the user taps on a food item in the "Add an item" list, a new menu "Amount Add" will slide down, and the user can type a positive number in the textbox. If the input is not a positive number, after tapping on the confirm button, the prompt "Please enter a positive number." will appear.
+
+The user can also add new food items by tapping on items in the "Meals" list. the current amount will be pre-filled in the textbox, and after entering a positive number, the user can then tap on the confirm button to update the amount. The user can also delete a food item on this menu by tapping on the trash can button. A warning menu in red background will appear, and the user can decide to cancel deletion and edit more or to delete the food item. The user can tap on the selected food item again to stow the menus back.
+
+The second part has two subparts, "Overview" and "Analysis". Both of these are calculated by the saved food items and their amount in the "Meals" list. For each of the nutrient items, if the amount falls in the recommended daily intake level interval, the results will be in green. Otherwise, they will be in red.
+
+For the third part "Suggestions", the user can select a food item with a specific amount and then add it to the meals list. The user can tap on a food item and confirm the recommended food amount by tapping the confirm button. The food item will then be added to the meals list. If all four nutrient items are with "OK" status, the texts "There is no suggestion." will appear in the list instead.
+
  
 # Collaborators
  
